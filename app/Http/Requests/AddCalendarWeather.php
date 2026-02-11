@@ -32,6 +32,7 @@ class AddCalendarWeather extends FormRequest
             'day' => 'required',
             'month' => 'required',
             'year' => 'required',
+            'hour' => 'nullable|in:0,1,2,3',
             'name' => 'nullable|string|max:40',
             'visibility_id' => 'nullable|exists:visibilities,id',
         ];

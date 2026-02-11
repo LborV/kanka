@@ -12,6 +12,18 @@
     </x-forms.field>
 
     <x-forms.field
+        field="hour"
+        :label="__('calendars/weather.fields.period')">
+        @php
+            $periodOptions = ['' => __('calendars/weather.periods.whole_day')];
+            foreach (\App\Models\CalendarWeather::$periods as $key => $name) {
+                $periodOptions[$key] = __('calendars/weather.periods.' . $name);
+            }
+        @endphp
+        <x-forms.select name="hour" :options="$periodOptions" :selected="old('hour', $weather->hour ?? '')" />
+    </x-forms.field>
+
+    <x-forms.field
         field="name"
         :label="__('calendars/weather.fields.name')">
         <input type="text" name="name" placeholder="{{ __('calendars/weather.placeholders.name') }}" maxlength="40" value="{!! htmlspecialchars(old('name', $source->name ?? $weather->name ?? null)) !!}" />

@@ -3,6 +3,7 @@
  * @var \App\Models\Calendar $calendar
  * @var \App\Models\Campaign $campaign
  * @var \Illuminate\Support\Collection $entries
+ * @var \Illuminate\Support\Collection $weatherPeriods
  * @var int $year
  * @var int $month
  * @var int $day
@@ -42,6 +43,28 @@ $dateLabel = $calendar->niceDate("{$year}-{$month}-{$day}");
             </a>
         @endif
     </div>
+
+    @if ($weatherPeriods->isNotEmpty())
+        <x-box>
+            <div class="flex flex-col gap-2">
+                <h4 class="text-sm font-bold m-0">{{ __('calendars/weather.fields.weather') }}</h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    @foreach ($weatherPeriods as $wp)
+                        <div class="flex items-center gap-2 p-2 rounded bg-base-200/50">
+                            <x-icon class="fa-solid fa-{{ $wp->weather }} text-lg" />
+                            <div class="flex flex-col">
+                                <span class="text-sm font-medium">{{ $wp->periodName() }}</span>
+                                <span class="text-xs text-neutral-content">{{ $wp->weatherName() }}</span>
+                                @if (!empty($wp->temperature))
+                                    <span class="text-xs text-neutral-content">{{ $wp->temperature }}</span>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </x-box>
+    @endif
 
     <x-box :padding="false">
         <div class="overflow-x-auto">

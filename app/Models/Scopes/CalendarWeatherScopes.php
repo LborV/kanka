@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * @method static self|Builder year(int $year)
  * @method static self|Builder month(int $month)
- * @method static self|Builder dated(int $calendarID, int $year, int $month, int $year)
+ * @method static self|Builder dated(int $calendarID, int $year, int $month, int $day)
+ * @method static self|Builder datedForDay(int $calendarID, int $year, int $month, int $day)
  */
 trait CalendarWeatherScopes
 {
@@ -35,5 +36,19 @@ trait CalendarWeatherScopes
             ->year($year)
             ->month($month)
             ->where('day', $day);
+    }
+
+    /**
+     * Get all weather entries for a specific day (all periods)
+     */
+    public function scopeDatedForDay(Builder $builder, int $calendarId, int $year, int $month, int $day): Builder
+    {
+        // @phpstan-ignore-next-line
+        return $builder
+            ->where('calendar_id', $calendarId)
+            ->year($year)
+            ->month($month)
+            ->where('day', $day)
+            ->orderBy('hour');
     }
 }

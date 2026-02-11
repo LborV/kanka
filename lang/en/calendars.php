@@ -146,6 +146,13 @@ return [
                 'year'          => 'Yearly',
             ],
         ],
+        'season_types'  => [
+            'cold'      => 'Cold',
+            'dry'       => 'Dry',
+            'temperate' => 'Temperate',
+            'warm'      => 'Warm',
+            'wet'       => 'Wet',
+        ],
         'resets'    => [
             ''      => 'None',
             'month' => 'Monthly',
@@ -183,6 +190,7 @@ return [
             'day'   => 'Day start',
             'month' => 'Month start',
             'name'  => 'Season Name',
+            'type'  => 'Type',
         ],
         'weeks'         => [
             'name'      => 'Week name',

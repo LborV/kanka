@@ -59,11 +59,15 @@ class CalendarService
      */
     public function saveWeather(AddCalendarWeather $request): CalendarWeather
     {
-        // Make sure we don't already have a weather effect on this date
+        $hour = $request->post('hour');
+        $hour = $hour !== null && $hour !== '' ? (int) $hour : null;
+
+        // Make sure we don't already have a weather effect on this date/period
         $weather = $this->findWeather(
             (int) $request->post('year'),
             (int) $request->post('month'),
-            (int) $request->post('day')
+            (int) $request->post('day'),
+            $hour
         );
 
         if (! $weather) {
@@ -72,6 +76,7 @@ class CalendarService
                 'year' => $request->post('year'),
                 'month' => $request->post('month'),
                 'day' => $request->post('day'),
+                'hour' => $hour,
                 'visibility_id' => $request->post('visibility_id'),
                 'name' => $request->post('name'),
             ]);
@@ -83,6 +88,7 @@ class CalendarService
             'precipitation' => $request->post('precipitation'),
             'wind' => $request->post('wind'),
             'effect' => $request->post('effect'),
+            'hour' => $hour,
             'visibility_id' => $request->post('visibility_id'),
             'name' => $request->post('name'),
         ]);
@@ -94,14 +100,22 @@ class CalendarService
     /**
      * Find the saved weather for a specific date
      */
-    public function findWeather(int $year, int $month, int $day)
+    public function findWeather(int $year, int $month, int $day, ?int $hour = null): ?CalendarWeather
     {
-        return CalendarWeather::dated(
+        $query = CalendarWeather::dated(
             $this->calendar->id,
             $year,
             $month,
             $day
-        )->first();
+        );
+
+        if ($hour !== null) {
+            $query->where('hour', $hour);
+        } else {
+            $query->whereNull('hour');
+        }
+
+        return $query->first();
     }
 
     /**

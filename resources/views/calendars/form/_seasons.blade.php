@@ -1,3 +1,13 @@
+<?php
+/** @var \App\Models\Calendar $model */
+$seasonTypes = [
+    'temperate' => __('calendars.options.season_types.temperate'),
+    'warm' => __('calendars.options.season_types.warm'),
+    'cold' => __('calendars.options.season_types.cold'),
+    'wet' => __('calendars.options.season_types.wet'),
+    'dry' => __('calendars.options.season_types.dry'),
+];
+?>
 <x-grid type="1/1">
     <p class="text-neutral-content m-0">{{ __('calendars.hints.seasons') }}</p>
 
@@ -10,6 +20,7 @@
     $seasonNames = old('season_name');
     $seasonMonths = old('season_month');
     $seasonDays = old('season_day');
+    $seasonTypeValues = old('season_type');
     if (!empty($seasonNames)) {
         $cpt = 0;
         foreach ($seasonNames as $name) {
@@ -17,7 +28,8 @@
                 $seasons[] = [
                     'name' => $name,
                     'month' => $seasonMonths[$cpt],
-                    'day' => $seasonDays[$cpt]
+                    'day' => $seasonDays[$cpt],
+                    'type' => $seasonTypeValues[$cpt] ?? 'temperate',
                 ];
             }
             $cpt++;
@@ -28,14 +40,15 @@
         $seasons = $source->child->seasons();
     }?>
     <div class="calendar-seasons sortable-elements flex flex-col gap-2" data-handle=".sortable-handler">
-        <x-grid type="3/3">
+        <div class="grid gap-2 grid-cols-2 md:grid-cols-4 md:gap-4">
             <div class="">{{ __('calendars.parameters.seasons.name') }}</div>
             <div class="">{{ __('calendars.parameters.seasons.month') }}</div>
             <div class="">{{ __('calendars.parameters.seasons.day') }}</div>
-        </x-grid>
+            <div class="">{{ __('calendars.parameters.seasons.type') }}</div>
+        </div>
         @foreach ($seasons as $season)
             <div class="parent-delete-row">
-                <x-grid type="3/3">
+                <div class="grid gap-2 grid-cols-2 md:grid-cols-4 md:gap-4">
                     <div class="flex gap-2 items-center">
                         <div class="sortable-handler p-2 cursor-move">
                             <x-icon class="fa-regular fa-grip-vertical" />
@@ -51,17 +64,21 @@
                         <input type="number" name="season_month[]" class="w-full" value="{{ $season['month'] }}" placeholder="{{ __('calendars.parameters.seasons.month') }}" />
                     </div>
 
+                    <div class="field">
+                        <label class="sr-only">{{ __('calendars.parameters.seasons.day') }}</label>
+                        <input type="number" name="season_day[]" class="w-full" value="{{ $season['day'] }}" placeholder="{{ __('calendars.parameters.seasons.day') }}" />
+                    </div>
+
                     <div class="flex gap-2 items-center">
                         <div class="grow field">
-                            <label class="sr-only">{{ __('calendars.parameters.seasons.day') }}</label>
-                            <input type="number" name="season_day[]" class="w-full" value="{{ $season['day'] }}" placeholder="{{ __('calendars.parameters.seasons.day') }}" />
-
+                            <label class="sr-only">{{ __('calendars.parameters.seasons.type') }}</label>
+                            <x-forms.select name="season_type[]" :options="$seasonTypes" :selected="\Illuminate\Support\Arr::get($season, 'type', 'temperate')" class="w-full" :label="__('calendars.parameters.seasons.type')" />
                         </div>
                         <div class="dynamic-row-delete btn2 btn-error btn-outline btn-sm" title="{{ __('crud.remove') }}">
                             <x-icon class="trash" />
                         </div>
                     </div>
-                </x-grid>
+                </div>
             </div>
         @endforeach
     </div>
@@ -72,7 +89,7 @@
     @parent
 <template id="template_season">
     <div class="parent-delete-row">
-        <x-grid type="3/3">
+        <div class="grid gap-2 grid-cols-2 md:grid-cols-4 md:gap-4">
             <div class="flex gap-2 items-center">
                 <div class="sortable-handler p-2 cursor-move">
                     <x-icon class="fa-regular fa-grip-vertical" />
@@ -88,16 +105,21 @@
                 <input type="number" name="season_month[]" class="w-full" value="" placeholder="{{ __('calendars.parameters.seasons.month') }}" />
             </div>
 
+            <div class="field">
+                <label class="sr-only">{{ __('calendars.parameters.seasons.day') }}</label>
+                <input type="number" name="season_day[]" class="w-full" value="" placeholder="{{ __('calendars.parameters.seasons.day') }}" />
+            </div>
+
             <div class="flex gap-2 items-center">
                 <div class="grow field">
-                    <label class="sr-only">{{ __('calendars.parameters.seasons.day') }}</label>
-                    <input type="number" name="season_day[]" class="w-full" value="" placeholder="{{ __('calendars.parameters.seasons.day') }}" />
+                    <label class="sr-only">{{ __('calendars.parameters.seasons.type') }}</label>
+                    <x-forms.select name="season_type[]" :options="$seasonTypes" selected="temperate" :label="__('calendars.parameters.seasons.type')" />
                 </div>
                 <div class="dynamic-row-delete btn2 btn-error btn-outline btn-sm" title="{{ __('crud.remove') }}">
                     <x-icon class="trash" />
                 </div>
             </div>
-        </x-grid>
+        </div>
     </div>
 </template>
 @endsection

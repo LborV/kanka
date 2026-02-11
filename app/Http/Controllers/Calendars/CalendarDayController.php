@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Calendars;
 
 use App\Http\Controllers\Controller;
 use App\Models\Calendar;
+use App\Models\CalendarWeather;
 use App\Models\Campaign;
+use App\Services\Calendars\WeatherService;
 use App\Traits\CampaignAware;
 use App\Traits\GuestAuthTrait;
 use Illuminate\Support\Str;
@@ -42,6 +44,12 @@ class CalendarDayController extends Controller
 
         $hoursCount = $calendar->hoursInDay();
 
+        // Players only see weather for past dates and up to 3 days in the future
+        $weatherPeriods = collect();
+        if ($canEdit || WeatherService::isDateVisibleForPlayer($calendar, $year, $month, $day)) {
+            $weatherPeriods = CalendarWeather::datedForDay($calendar->id, $year, $month, $day)->get();
+        }
+
         return view('calendars.day', compact(
             'campaign',
             'calendar',
@@ -51,6 +59,7 @@ class CalendarDayController extends Controller
             'entries',
             'hoursCount',
             'canEdit',
+            'weatherPeriods',
         ));
     }
 }

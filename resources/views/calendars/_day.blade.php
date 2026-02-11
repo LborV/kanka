@@ -78,7 +78,16 @@
                 </div>
             @endif
 
-            @if (!empty($day['weather']))
+            @if (!empty($day['weatherPeriods']))
+                <div class="weather flex flex-col gap-0.5" data-html="true" data-toggle="tooltip" data-title="@foreach($day['weatherPeriods'] as $wp){!! $wp->tooltip() !!}@endforeach">
+                    @foreach ($day['weatherPeriods'] as $wp)
+                        <div class="flex items-center gap-1 text-2xs weather-{{ $wp->weather }}">
+                            <x-icon class="fa-solid fa-{{ $wp->weather }}" />
+                            <span class="truncate">{{ $wp->periodName() }}</span>
+                        </div>
+                    @endforeach
+                </div>
+            @elseif (!empty($day['weather']))
                 <div class="weather weather-{{ $day['weather']->weather }}" data-html="true" data-toggle="tooltip" data-title="{!! $day['weather']->tooltip() !!}">
                     <x-icon class="fa-solid fa-{{ $day['weather']->weather }}" />
                     {{ $day['weather']->weatherName() }}

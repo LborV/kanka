@@ -22,7 +22,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $year
  * @property int $month
  * @property int $day
+ * @property ?int $hour
  * @property string $name
+ * @property bool $is_generated
  * @property Calendar $calendar
  */
 class CalendarWeather extends Model
@@ -46,6 +48,8 @@ class CalendarWeather extends Model
         'year',
         'visibility_id',
         'name',
+        'hour',
+        'is_generated',
     ];
 
     protected array $sanitizable = [
@@ -65,9 +69,27 @@ class CalendarWeather extends Model
         return $this->belongsTo(Calendar::class);
     }
 
+    public static array $periods = [
+        0 => 'morning',
+        1 => 'midday',
+        2 => 'evening',
+        3 => 'night',
+    ];
+
+    public function periodName(): string
+    {
+        if ($this->hour === null) {
+            return __('calendars/weather.periods.whole_day');
+        }
+
+        return __('calendars/weather.periods.' . (self::$periods[$this->hour] ?? 'morning'));
+    }
+
     public function tooltip(): string
     {
-        return
+        $period = $this->hour !== null ? '<strong>' . $this->periodName() . "</strong><br />\n" : '';
+
+        return $period .
             (! empty($this->temperature) ? __('calendars/weather.fields.temperature') . ': ' . e($this->temperature) . "<br />\n" : null) .
             (! empty($this->precipitation) ? __('calendars/weather.fields.precipitation') . ': ' . e($this->precipitation) . "<br />\n" : null) .
             (! empty($this->wind) ? __('calendars/weather.fields.wind') . ': ' . e($this->wind) . "<br />\n" : null) .

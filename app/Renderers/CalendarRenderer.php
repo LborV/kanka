@@ -78,6 +78,11 @@ class CalendarRenderer
      */
     protected array $eventEnd = [];
 
+    /**
+     * Whether the current user can edit the calendar (admin). Players see restricted weather.
+     */
+    protected bool $canEdit = false;
+
     protected array $dayData;
 
     protected array $remainingRecurring;
@@ -92,6 +97,13 @@ class CalendarRenderer
     public function prepare(): self
     {
         $this->buildCurrentSegments();
+
+        return $this;
+    }
+
+    public function setCanEdit(bool $canEdit): self
+    {
+        $this->canEdit = $canEdit;
 
         return $this;
     }
@@ -388,6 +400,9 @@ class CalendarRenderer
 
                 if ($this->weatherService->has($exact)) {
                     $this->dayData['weather'] = $this->weatherService->get($exact);
+                    if ($this->weatherService->hasPeriods($exact)) {
+                        $this->dayData['weatherPeriods'] = $this->weatherService->getPeriods($exact);
+                    }
                 }
 
                 $monthday = $this->getMonth() . '-' . $day;
@@ -534,6 +549,9 @@ class CalendarRenderer
                 }
                 if ($this->weatherService->has($exact)) {
                     $this->dayData['weather'] = $this->weatherService->get($exact);
+                    if ($this->weatherService->hasPeriods($exact)) {
+                        $this->dayData['weatherPeriods'] = $this->weatherService->getPeriods($exact);
+                    }
                 }
 
                 $this->recurringReminders();
@@ -1014,6 +1032,11 @@ class CalendarRenderer
             ->calendar($this->calendar)
             ->currentYear($this->currentYear())
             ->build();
+
+        // Players only see weather for past dates and up to 3 days in the future
+        if (! $this->canEdit) {
+            $this->weatherService->restrictForPlayer();
+        }
     }
 
     /**

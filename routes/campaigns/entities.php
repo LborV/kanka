@@ -146,6 +146,9 @@ Route::delete('/w/{campaign}/calendars/{calendar}/time-entries/{calendarTimeEntr
 //        Route::get('/w/{campaign}/calendars/{calendar}/weather', 'Calendar\CalendarWeatherController@form')->name('calendars.weather.create');
 //        Route::post('/w/{campaign}/calendars/{calendar}/weather', 'Calendar\CalendarWeatherController@store')->name('calendars.weather.store');
 
+Route::get('/w/{campaign}/calendars/{calendar}/generate-weather', 'Calendar\GenerateCalendarWeatherController@create')->name('calendars.generate-weather.create');
+Route::post('/w/{campaign}/calendars/{calendar}/generate-weather', 'Calendar\GenerateCalendarWeatherController@store')->name('calendars.generate-weather.store');
+
 // Attribute multi-save
 Route::get('/w/{campaign}/entities/{entity}/attributes', [App\Http\Controllers\Entity\AttributeController::class, 'index'])->name('entities.attributes');
 Route::get('/w/{campaign}/entities/{entity}/attributes-dashboard', [App\Http\Controllers\Entity\AttributeController::class, 'dashboard'])->name('entities.attributes-dashboard');

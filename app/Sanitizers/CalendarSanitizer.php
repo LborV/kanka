@@ -165,6 +165,7 @@ class CalendarSanitizer extends MiscSanitizer
         $seasonNames = (array) $this->request->post('season_name', []);
         $seasonMonths = (array) $this->request->post('season_month', []);
         $seasonDays = (array) $this->request->post('season_day', []);
+        $seasonTypes = (array) $this->request->post('season_type', []);
         foreach ($seasonNames as $name) {
             if (empty($name)) {
                 continue;
@@ -177,6 +178,7 @@ class CalendarSanitizer extends MiscSanitizer
                 'name' => $this->purify($name),
                 'month' => $month < 1 ? 1 : $month,
                 'day' => $day,
+                'type' => $this->purify($seasonTypes[$seasonCount] ?? 'temperate'),
             ];
             $seasonCount++;
         }

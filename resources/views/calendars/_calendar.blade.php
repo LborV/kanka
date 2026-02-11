@@ -20,6 +20,7 @@ $weekNumber = 1;
         ->campaign($campaign)
         ->calendar($model)
         ->request(request())
+        ->setCanEdit($canEdit)
         ->prepare()
 @endphp
 
@@ -99,6 +100,13 @@ $weekNumber = 1;
     </div>
     @if ($renderer->monthAlias())
     <div class="text-xs text-neutral-content italic">{!! $renderer->monthAlias() !!}</div>
+    @endif
+
+    @if ($canEdit)
+    <a href="#" class="btn2 btn-sm" data-toggle="dialog" data-url="{{ route('calendars.generate-weather.create', [$campaign, $model, 'year' => $renderer->currentYear()]) }}" data-title="{{ __('calendars/weather.actions.generate') }}" title="{{ __('calendars/weather.actions.generate') }}" data-tooltip="tooltip">
+        <x-icon class="fa-solid fa-cloud-bolt" />
+        <span class="hidden md:inline">{{ __('calendars/weather.actions.generate') }}</span>
+    </a>
     @endif
 </div>
 
