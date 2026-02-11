@@ -5,24 +5,24 @@ return [
         /**
          * Limits in place for standard campaigns. Premium campaigns are unlimited
          */
-        'members' => 10,
-        'roles' => 3,
-        'bookmarks' => 3,
+        'members' => 100,
+        'roles' => 15,
+        'bookmarks' => 10000,
 
         /**
          * Entities have a limited number of files (a type of entity_asset) available on each entity
          */
         'files' => [
-            'standard' => 3,
+            'standard' => 20,
             'premium' => 20,
         ],
         /**
          * Number of custom modules allowed per subscription tier.
          */
         'modules' => [
-            'premium' => env('APP_MODULE_LIMIT', 5),
-            'wyvern' => env('APP_WYVERN_MODULE_LIMIT', 10),
-            'elemental' => env('APP_ELEMENTAL_MODULE_LIMIT', 20),
+            'premium' =>  100,
+            'wyvern' =>  100,
+            'elemental' =>  100,
         ],
 
         'export' => 6, // hours after which exports get deleted
@@ -49,29 +49,29 @@ return [
      */
     'filesize' => [
         'image' => [
-            'standard' => env('APP_IMAGE_SIZE_MB', 3),
-            'owlbear' => env('APP_IMAGE_SIZE_OWLBEAR_MB', 10),
-            'wyvern' => env('APP_IMAGE_SIZE_WYVERN_MB', 25),
-            'elemental' => env('APP_IMAGE_SIZE_ELEMENTAL_MB', 100),
+            'standard' =>  100,
+            'owlbear' => 100,
+            'wyvern' => 100,
+            'elemental' =>  100,
         ],
-        'map' => env('APP_MAP_SIZE_MB', 5),
+        'map' =>  100,
     ],
 
     'gallery' => [
-        'standard' => env('APP_GALLERY_STANDARD', 150 * 1024),
-        'premium' => env('APP_GALLERY_PREMIUM', 3 * 1024 * 1024),
-        'wyvern' => env('APP_GALLERY_WYVERN', 10 * 1024 * 1024),
-        'elemental' => env('APP_GALLERY_ELEMENTAL', 25 * 1024 * 1024),
+        'standard' => 25 * 1024 * 1024,
+        'premium' => 25 * 1024 * 1024,
+        'wyvern' => 25 * 1024 * 1024,
+        'elemental' =>  25 * 1024 * 1024,
         // 'premium' => 20 * 1024,
     ],
 
-    'pagination' => env('APP_PAGINATION', 15),
+    'pagination' => 100,
 
     'api' => [
         // Throttling values of requests per minute before a 421 "back down" response is thrown
         'throttle' => [
-            'subscriber' => env('API_THROTTLE_SUBSCRIBER_LIMIT', 90),
-            'default' => env('API_THROTTLE_LIMIT', 30),
+            'subscriber' =>  90,
+            'default' => 30,
         ],
     ],
 ];
