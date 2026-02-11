@@ -46,7 +46,11 @@ if (!empty($era)) {
         <x-forms.select name="position" :options="$positions" :selected="(!empty($model->position) ? -9999 : $oldPosition)" />
     </x-forms.field>
 
-    @include('cruds.fields.colour', ['default' => 'grey'])
+    <x-forms.field field="colour" :label="__('crud.fields.colour')">
+        <span>
+            <input type="text" name="colour" value="{{ old('colour', (isset($source) && $source->colour ? $source->hexColour() : null) ?? (isset($model) && $model->colour ? $model->hexColour() : null) ?? '#797676') }}" class="spectrum" maxlength="7" />
+        </span>
+    </x-forms.field>
 
     <x-forms.field field="icon" :label="__('timelines/elements.fields.icon')">
 
@@ -64,6 +68,10 @@ if (!empty($era)) {
         'fontawesome' => '<a href="' . config('fontawesome.search') . '" class="text-link">Font Awesome</a>'
         ]) !!}</p>
             </x-helper>
+
+        @if ($campaign->boosted())
+            @include('cruds.fields.icon_picker', ['target' => 'icon'])
+        @endif
 
         @if (!$campaign->boosted())
             @can('boost', auth()->user())

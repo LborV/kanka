@@ -31,4 +31,8 @@
             @endforeach
         </datalist>
     </div>
+
+    @if ($campaign->boosted())
+        @include('cruds.fields.icon_picker', ['target' => $fieldname])
+    @endif
 </x-forms.field>

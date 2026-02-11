@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 
 /**
@@ -76,6 +77,40 @@ class TimelineElement extends Model
         'date',
         'icon',
     ];
+
+    /**
+     * Named colour to hex mapping for legacy timeline element colours.
+     */
+    protected static array $namedColourMap = [
+        'grey' => '#797676',
+        'gray' => '#797676',
+        'black' => '#111111',
+        'red' => '#D93D33',
+        'yellow' => '#f39c12',
+        'aqua' => '#00829B',
+        'light-blue' => '#3A7CAD',
+        'green' => '#058943',
+        'navy' => '#001F3F',
+        'teal' => '#2D8289',
+        'orange' => '#C85208',
+        'purple' => '#605ca8',
+        'maroon' => '#D81B60',
+        'pink' => '#C822D7',
+        'brown' => '#a35831',
+    ];
+
+    /**
+     * Convert a legacy named colour to its hex equivalent.
+     * Returns the colour as-is if already hex.
+     */
+    public function hexColour(): string
+    {
+        if (Str::startsWith($this->colour ?? '', '#')) {
+            return $this->colour;
+        }
+
+        return static::$namedColourMap[$this->colour] ?? '#797676';
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Timeline, $this>
