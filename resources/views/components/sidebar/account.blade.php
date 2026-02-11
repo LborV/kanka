@@ -39,7 +39,8 @@
                 ></x-sidebar.element>
             </li>
 
-            <li class="section-subscription pt-4">
+            {{-- Disabled for self-hosted: Subscription section --}}
+            {{--<li class="section-subscription pt-4">
                 <x-sidebar.section :text="__('settings.menu.subscription')" />
                 <ul class="sidebar-submenu list-none p-0 m-0">
                     @if (config('services.stripe.enabled'))
@@ -86,7 +87,7 @@
                         </li>
                     @endif
                 </ul>
-            </li>
+            </li>--}}
 
             <li class="section-other pt-4">
                 <x-sidebar.section :text="__('settings.menu.other')" />

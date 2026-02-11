@@ -20,9 +20,10 @@
                 <x-icon class="{{ $urlIcon }}" />
             </a>
         @endif
-    @elseif ($premium && !$campaign->boosted())
+    {{-- Disabled for self-hosted: Premium CTA --}}
+    {{--@elseif ($premium && !$campaign->boosted())
         <a class="rounded-full border h-12 w-12 flex items-center justify-center cursor-pointer neutral-link flex-none" href="{{ route('settings.premium', ['campaign' => $campaign->id]) }}" data-tooltip data-title="{{ __('settings/premium.actions.unlock') }}">
             <x-icon class="premium" />
-        </a>
+        </a>--}}
     @endif
 </x-box>

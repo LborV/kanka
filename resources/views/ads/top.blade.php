@@ -51,7 +51,8 @@
         });
     </script>
 
-    @php $amount = auth()->check() && auth()->user()->currency() === 'brl' ? 20 : 5; @endphp
+    {{-- Disabled for self-hosted: Subscription CTA --}}
+    {{--@php $amount = auth()->check() && auth()->user()->currency() === 'brl' ? 20 : 5; @endphp
     <p class="italic mb-4 mx-4">
         {!! __('misc.ads.remove_v5', [
         'amount' => $amount,
@@ -61,5 +62,5 @@
         <a href="{{ route('settings.subscription') }}" class="text-link">
             {{ __('misc.ads.member') }}
         </a>
-    </p>
+    </p>--}}
 </x-ad>

@@ -61,7 +61,8 @@
         });
     </script>
 
-    @isset($cta)
+    {{-- Disabled for self-hosted: Subscription CTA --}}
+    {{--@isset($cta)
         @php $amount = auth()->check() && auth()->user()->currency() === 'brl' ? 20 : 5; @endphp
         <p class="italic mb-4 mx-4">
             {!! __('misc.ads.remove_v5', [
@@ -73,5 +74,5 @@
                 {{ __('misc.ads.member') }}
             </a>
         </p>
-    @endif
+    @endif--}}
 </x-ad>

@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback')->name('auth.provider.callback');
 
-Route::group(['prefix' => 'subscription-api'], function () {
+// Disabled for self-hosted: Subscription routes
+/*Route::group(['prefix' => 'subscription-api'], function () {
     Route::get('setup-intent', 'Settings\SubscriptionApiController@setupIntent');
     Route::post('payments', 'Settings\SubscriptionApiController@paymentMethods');
     Route::get('payment-methods', 'Settings\SubscriptionApiController@getPaymentMethods');
     Route::post('remove-payment', 'Settings\SubscriptionApiController@removePaymentMethod');
     Route::get('check-coupon/{tier}', [App\Http\Controllers\Settings\SubscriptionApiController::class, 'checkCoupon'])
         ->name('subscription.check-coupon');
-});
+});*/
 
 Route::get('users/{user}', [App\Http\Controllers\User\ProfileController::class, 'show'])->name('users.profile');
 

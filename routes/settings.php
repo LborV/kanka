@@ -37,20 +37,23 @@ Route::get('/', [ProfileController::class, 'index'])->name('settings');
 Route::get('/profile', [ProfileController::class, 'index'])->name('settings.profile');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('settings.profile-process');
 
-Route::get('/account/billing/info', [InformationController::class, 'index'])->name('account.billing.info');
-Route::patch('/account/billing/info', [InformationController::class, 'save'])->name('account.billing.info-save');
+// Disabled for self-hosted: Billing routes
+/*Route::get('/account/billing/info', [InformationController::class, 'index'])->name('account.billing.info');
+Route::patch('/account/billing/info', [InformationController::class, 'save'])->name('account.billing.info-save');*/
 
-Route::get('/boosters', [BoostController::class, 'index'])->name('settings.boost');
+// Disabled for self-hosted: Booster routes
+/*Route::get('/boosters', [BoostController::class, 'index'])->name('settings.boost');
 Route::get('/boosters/boost/{campaign}', [BoostController::class, 'boost'])->name('settings.campaign-boost');
-Route::get('/boosters/unboost/{campaign}', [BoostController::class, 'unboost'])->name('settings.campaign-unboost');
+Route::get('/boosters/unboost/{campaign}', [BoostController::class, 'unboost'])->name('settings.campaign-unboost');*/
 
-Route::post('/switch-to-premium', [PremiumController::class, 'migrate'])
+// Disabled for self-hosted: Premium routes
+/*Route::post('/switch-to-premium', [PremiumController::class, 'migrate'])
     ->name('settings.switch-to-premium');
 Route::get('/switch-back', [PremiumController::class, 'back'])
     ->name('settings.switch-back');
 Route::get('/premium', [PremiumController::class, 'index'])->name('settings.premium');
 Route::get('/boosters/premium/{campaign}', [PremiumController::class, 'premium'])->name('settings.campaign-premium');
-Route::get('/boosters/unpremium/{campaign}', [PremiumController::class, 'unpremium'])->name('settings.campaign-unpremium');
+Route::get('/boosters/unpremium/{campaign}', [PremiumController::class, 'unpremium'])->name('settings.campaign-unpremium');*/
 
 Route::post('/release/{app_release}', [ReleaseController::class, 'read'])->name('settings.release');
 
@@ -85,7 +88,8 @@ Route::patch('/appearance', [AppearanceController::class, 'update'])->name('sett
 Route::get('/newsletter', [NewsletterController::class, 'index'])->name('settings.newsletter');
 Route::patch('/newsletter', [NewsletterController::class, 'update'])->name('settings.newsletter.save');
 
-Route::get('/subscription', [SubscriptionController::class, 'index'])->name('settings.subscription');
+// Disabled for self-hosted: Subscription management routes
+/*Route::get('/subscription', [SubscriptionController::class, 'index'])->name('settings.subscription');
 Route::get('/subscription/change/{tier}', [SubscriptionController::class, 'change'])->name('settings.subscription.change');
 Route::post('/subscription/renew', [SubscriptionController::class, 'renew'])->name('settings.subscription.renew');
 Route::get('/subscription/finish', [FinishController::class, 'index'])->name('settings.subscription.finish');
@@ -102,7 +106,7 @@ Route::get('/subscription/free-trial', [FreeTrialController::class, 'index'])->n
 Route::post('/subscription/free-trial/accept', [FreeTrialController::class, 'accept'])->name('settings.free-trial.accept');
 
 Route::get('/billing/history', [HistoryController::class, 'index'])->name('billing.history');
-Route::get('/billing/history/download/{invoice}', [HistoryController::class, 'download'])->name('billing.history.download');
+Route::get('/billing/history/download/{invoice}', [HistoryController::class, 'download'])->name('billing.history.download');*/
 
 Route::get('/bragi', 'Settings\BragiController@index')
     ->name('settings.bragi');
@@ -134,14 +138,14 @@ Route::post('/marketplace', 'Settings\MarketplaceController@save')
 Route::post('/tutorials/{code}/dismiss', [App\Http\Controllers\Settings\TutorialController::class, 'dismiss'])->name('tutorials.dismiss');
 Route::patch('/tutorials/reset', [App\Http\Controllers\Settings\TutorialController::class, 'reset'])->name('tutorials.reset');
 
-// Campaign boosters
-Route::resources([
+// Disabled for self-hosted: Campaign boosters
+/*Route::resources([
     'campaign_boosts' => CampaignBoostController::class,
 ]);
 Route::get(
     'campaign_boosts/{campaign_boost}/confirm',
     [CampaignBoostController::class, 'confirm']
-)->name('campaign_boost.confirm-destroy');
+)->name('campaign_boost.confirm-destroy');*/
 
 /*
 --------------------------------------------------------------------------
@@ -164,16 +168,16 @@ Route::post('/security/verify2fa', function () {
 })->name('auth.verify-2fa')->middleware('2fa');*/
 
 /*
---------------------------------------------------------------------------
-PayPal API
+---------- - Disabled for self-hosted
 --------------------------------------------------------------------------
 */
 
-Route::post('paypal/process-transaction/{tier}', [PayPalController::class, 'processTransaction'])
+/*Route::post('paypal/process-transaction/{tier}', [PayPalController::class, 'processTransaction'])
     ->name('paypal.process-transaction');
 Route::get('paypal/success-transaction', [PayPalController::class, 'successTransaction'])
     ->name('paypal.transaction-success');
 Route::get('paypal/cancel-transaction', [PayPalController::class, 'cancelTransaction'])
+    ->name('paypal.cancel-transaction');*/[PayPalController::class, 'cancelTransaction'])
     ->name('paypal.cancel-transaction');
 
 /*
