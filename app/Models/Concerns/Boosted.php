@@ -22,11 +22,7 @@ trait Boosted
      */
     public function boosted(bool $superboosted = false): bool
     {
-        if (request()->get('_boosted') === '0') {
-            return false;
-        }
-
-        return $this->boost_count > ($superboosted ? 2 : 0);
+        return true;
     }
 
     /**
@@ -39,7 +35,7 @@ trait Boosted
 
     public function legacyBoosted(): bool
     {
-        return $this->boost_count > 0 && $this->boost_count < 4;
+        return true;
     }
 
     /**
@@ -47,11 +43,7 @@ trait Boosted
      */
     public function premium(): bool
     {
-        if (request()->get('_boosted') === '0') {
-            return false;
-        }
-
-        return $this->boost_count >= 4;
+        return true;
     }
 
     /**
@@ -59,9 +51,7 @@ trait Boosted
      */
     public function isWyvern(): bool
     {
-        $boost = $this->boosts->first();
-
-        return $boost?->user->isWyvern() ?? false;
+        return true;
     }
 
     /**
@@ -69,8 +59,6 @@ trait Boosted
      */
     public function isElemental(): bool
     {
-        $boost = $this->boosts->first();
-
-        return $boost?->user->isElemental() ?? false;
+        return true;
     }
 }
