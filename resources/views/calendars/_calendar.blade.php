@@ -23,7 +23,7 @@ $weekNumber = 1;
         ->prepare()
 @endphp
 
-<div class="calendar-toolbar flex gap-2 items-center flex-wrap">
+<div class="calendar-toolbar flex gap-2 items-center flex-wrap mb-4">
     <a
         href="{{ route('entities.show', [$campaign, 'entity' => $entity, 'month' => $renderer->currentMonthId(), 'year' => $renderer->currentYear()]) }}"
         class="btn2 btn-sm @if ($renderer->todayButtonIsDisabled()) btn-disabled" disabled="disabled @endif"
@@ -97,12 +97,15 @@ $weekNumber = 1;
             {{ __('calendars.layouts.month') }}
         </a>
     </div>
-    <div class="month-alias help-block m-0">{!! $renderer->monthAlias() !!}</div>
+    @if ($renderer->monthAlias())
+    <div class="text-xs text-neutral-content italic">{!! $renderer->monthAlias() !!}</div>
+    @endif
 </div>
 
 <x-box :padding="false">
 @php $intercalary = $renderer->isIntercalaryMonth() @endphp
-<table class="calendar table table-striped table-fixed">
+<div class="overflow-x-auto">
+<table class="calendar table table-fixed w-full">
     <thead>
     <tr>
         @foreach ($model->weekdays() as $weekday)
@@ -147,6 +150,7 @@ $weekNumber = 1;
     @endif
     </tbody>
 </table>
+</div>
 </x-box>
 
 @section('modals')

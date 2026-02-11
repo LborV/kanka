@@ -3,7 +3,7 @@
  * @var \App\Models\EntityEvent $event
  */?>
 @if(empty($day))
-    <td class="h-24"></td>
+    <td class="h-24 bg-base-100/30"></td>
 @else
 
     @php
@@ -19,11 +19,11 @@
     }
     @endphp
 
-    <td class="h-24 text-center wrap-break-word align-top {{ $day['isToday'] ? 'today bg-base-200' : null }}" data-date="{{ \Illuminate\Support\Arr::get($day, 'date', null) }}" @if ($canEdit) data-dbclick data-url="{{ route('calendars.event.create', $routeOptions) }}" @endif>
-        <div class="flex flex-col gap-1">
+    <td class="h-24 text-center wrap-break-word align-top {{ $day['isToday'] ? 'today' : null }} p-1.5" data-date="{{ \Illuminate\Support\Arr::get($day, 'date', null) }}" @if ($canEdit) data-dbclick data-url="{{ route('calendars.event.create', $routeOptions) }}" @endif>
+        <div class="flex flex-col gap-1.5">
         @if ($day['day'])
-            <div class="flex gap-1 items-center">
-                <div class="text-base day-name {{ $day['isToday'] ? "badge badge-primary" : null}}">
+            <div class="flex gap-1 items-center mb-0.5">
+                <div class="text-sm day-name {{ $day['isToday'] ? "badge badge-primary badge-sm" : null}}">
                     <span class="day-number">{{ $day['day'] }}</span>
                     <span class="julian-number">{{ $day['julian'] }}</span>
                 </div>
@@ -67,7 +67,7 @@
                 @endforeach
             @endif
             @if (!empty($day['season']))
-                <div class="badge calendar-season bg-season block w-full text-xs!" data-toggle="tooltip" data-title="{{ __('calendars.parameters.seasons.name') }}">
+                <div class="badge calendar-season bg-season block w-full text-2xs! rounded-sm" data-toggle="tooltip" data-title="{{ __('calendars.parameters.seasons.name') }}">
                     {{ $day['season'] }}
                 </div>
             @endif
@@ -80,7 +80,7 @@
             @endif
             @if (!empty($day['events']))
                 @foreach ($day['events'] as $event)
-                    <div class="calendar-event-block text-left rounded-sm p-1 relative cursor-pointer text-sm flex gap-1 flex-col   {{ $event->getLabelColour() }}" style="background-color: {{ $event->getLabelBackgroundColour() }}; @if (\Illuminate\Support\Str::startsWith($event->colour, '#')) color: {{ $colours->contrastBW($event->colour) }};"@endif
+                    <div class="calendar-event-block text-left rounded p-1.5 relative cursor-pointer text-xs flex gap-1 flex-col {{ $event->getLabelColour() }}" style="background-color: {{ $event->getLabelBackgroundColour() }}; @if (\Illuminate\Support\Str::startsWith($event->colour, '#')) color: {{ $colours->contrastBW($event->colour) }};"@endif
                         @if ($canEdit && $event->isEntity())
                             @php unset($routeOptions[0]); unset($routeOptions['date']); @endphp
                             data-toggle="dialog" data-url="{{ route('reminders.edit', ($event->calendar_id !== $model->id ? [$campaign, $event->id, 'from' => $model->calendar_id, 'next' => 'calendar.' . $model->id] : [$campaign, $event->id, 'next' => 'calendar.' . $model->id]) + $routeOptions) }}"
@@ -97,7 +97,7 @@
                         <div class="flex gap-1 items-center">
                             @if ($event->isEntity() && Avatar::entity($event->remindable)->hasImage())
                                 <div class="hidden md:inline grow-0">
-                                    <a href="{{ $event->remindable->url() }}" class="entity-image w-7 h-7 cover-background" style="background-image: url('{{ Avatar::size(40)->thumbnail() }}');"></a>
+                                    <a href="{{ $event->remindable->url() }}" class="entity-image w-6 h-6 rounded-full cover-background" style="background-image: url('{{ Avatar::size(40)->thumbnail() }}');"></a>
                                 </div>
                             @endif
 
