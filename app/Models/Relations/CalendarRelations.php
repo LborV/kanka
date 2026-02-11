@@ -3,6 +3,7 @@
 namespace App\Models\Relations;
 
 use App\Models\Calendar;
+use App\Models\CalendarTimeEntry;
 use App\Models\CalendarWeather;
 use App\Models\Reminder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,6 +13,7 @@ use Illuminate\Support\Collection;
 /**
  * @property Collection|Reminder[] $calendarEvents
  * @property Collection|CalendarWeather[] $calendarWeather
+ * @property Collection|CalendarTimeEntry[] $calendarTimeEntries
  * @property ?Calendar $calendar
  */
 trait CalendarRelations
@@ -30,6 +32,14 @@ trait CalendarRelations
     public function calendarWeather(): HasMany
     {
         return $this->hasMany(CalendarWeather::class, 'calendar_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\CalendarTimeEntry, $this>
+     */
+    public function calendarTimeEntries(): HasMany
+    {
+        return $this->hasMany(CalendarTimeEntry::class, 'calendar_id');
     }
 
     /**

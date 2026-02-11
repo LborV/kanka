@@ -32,6 +32,13 @@
         ></x-dashboards.widgets.selection>
 
         <x-dashboards.widgets.selection
+            :widget="Widget::Schedule"
+            :campaign="$campaign"
+            :dashboard="$dashboard"
+            icon="fa-clock"
+        ></x-dashboards.widgets.selection>
+
+        <x-dashboards.widgets.selection
             :widget="Widget::Header"
             :campaign="$campaign"
             :dashboard="$dashboard"

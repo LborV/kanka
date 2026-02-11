@@ -17,6 +17,7 @@ class CalendarSanitizer extends MiscSanitizer
             ->cleanWeekNames()
             ->cleanMoons()
             ->cleanSeasons()
+            ->cleanHours()
             ->cleanDate();
 
         // Leap year
@@ -180,6 +181,22 @@ class CalendarSanitizer extends MiscSanitizer
             $seasonCount++;
         }
         $this->data['seasons'] = json_encode($seasons);
+
+        return $this;
+    }
+
+    protected function cleanHours(): self
+    {
+        $hours = [];
+        $hourNames = (array) $this->request->post('hour_name', []);
+        foreach ($hourNames as $name) {
+            if (empty($name)) {
+                continue;
+            }
+
+            $hours[] = ['name' => $this->purify($name)];
+        }
+        $this->data['hours'] = json_encode($hours);
 
         return $this;
     }

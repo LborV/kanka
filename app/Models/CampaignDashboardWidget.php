@@ -457,6 +457,8 @@ class CampaignDashboardWidget extends Model
             return 'fa-regular fa-party-horn';
         } elseif ($this->widget === Widget::Onboarding) {
             return 'fa-regular fa-calendar-check';
+        } elseif ($this->widget === Widget::Schedule) {
+            return 'fa-regular fa-clock';
         }
 
         return 'fa-regular fa-question-circle';
@@ -520,6 +522,7 @@ class CampaignDashboardWidget extends Model
         return in_array($this->widget, [
             Widget::Calendar,
             Widget::Preview,
+            Widget::Schedule,
             Widget::Unmentioned,
         ]) && empty($this->entity);
     }

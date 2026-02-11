@@ -135,6 +135,14 @@ Route::get('/w/{campaign}/calendars/{calendar}/validate-length', [App\Http\Contr
 
 Route::post('/w/{campaign}/calendars/{calendar}/calendar-events/bulk', 'Calendars\Bulks\EntityEventController@index')->name('calendars.entity-events.bulk');
 
+// Calendar Day View & Time Entries
+Route::get('/w/{campaign}/calendars/{calendar}/day', 'Calendars\CalendarDayController@show')->name('calendars.day');
+Route::get('/w/{campaign}/calendars/{calendar}/time-entries/create', 'Calendars\CalendarTimeEntryController@create')->name('calendars.time-entries.create');
+Route::post('/w/{campaign}/calendars/{calendar}/time-entries', 'Calendars\CalendarTimeEntryController@store')->name('calendars.time-entries.store');
+Route::get('/w/{campaign}/calendars/{calendar}/time-entries/{calendarTimeEntry}/edit', 'Calendars\CalendarTimeEntryController@edit')->name('calendars.time-entries.edit');
+Route::put('/w/{campaign}/calendars/{calendar}/time-entries/{calendarTimeEntry}', 'Calendars\CalendarTimeEntryController@update')->name('calendars.time-entries.update');
+Route::delete('/w/{campaign}/calendars/{calendar}/time-entries/{calendarTimeEntry}', 'Calendars\CalendarTimeEntryController@destroy')->name('calendars.time-entries.destroy');
+
 //        Route::get('/w/{campaign}/calendars/{calendar}/weather', 'Calendar\CalendarWeatherController@form')->name('calendars.weather.create');
 //        Route::post('/w/{campaign}/calendars/{calendar}/weather', 'Calendar\CalendarWeatherController@store')->name('calendars.weather.store');
 

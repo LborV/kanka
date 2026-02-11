@@ -24,7 +24,7 @@
         @if ($day['day'])
             <div class="flex gap-1 items-center mb-0.5">
                 <div class="text-sm day-name {{ $day['isToday'] ? "badge badge-primary badge-sm" : null}}">
-                    <span class="day-number">{{ $day['day'] }}</span>
+                    <a href="{{ route('calendars.day', [$campaign, $model, 'date' => $day['date']]) }}" class="day-number hover:underline" title="{{ __('calendars.actions.view_day') }}">{{ $day['day'] }}</a>
                     <span class="julian-number">{{ $day['julian'] }}</span>
                 </div>
                 <div class="grow truncate">
@@ -40,6 +40,12 @@
                     </a>
 
                     <div class="dropdown-menu hidden" role="menu">
+                        <x-dropdowns.item :link="route('calendars.day', [$campaign, $model, 'date' => $day['date']])" icon="fa-regular fa-clock">
+                            {{ __('calendars.actions.view_day') }}
+                        </x-dropdowns.item>
+
+                        <x-dropdowns.divider />
+
                         @php $data = ['toggle' => 'dialog', 'date' => $day['date'], 'target' => 'primary-dialog', 'url' => route('calendars.event.create', $routeOptions)]; @endphp
                         <x-dropdowns.item link="#" :data="$data" icon="plus">
                             {{ __('calendars.actions.add_reminder') }}

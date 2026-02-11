@@ -24,6 +24,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property string $months
  * @property string $years
  * @property string $weekdays
+ * @property string $hours
  * @property string $week_names
  * @property string $month_aliases
  * @property string $seasons
@@ -78,6 +79,7 @@ class Calendar extends MiscModel
         'leap_year_start', // X year is a leap year
 
         'calendar_id',
+        'hours',
     ];
 
     /** @var array<string, string> */
@@ -100,6 +102,8 @@ class Calendar extends MiscModel
     protected array $loadedMoons;
 
     protected array $loadedWeeks;
+
+    protected array $loadedHours;
 
     protected array $loadedMonthAliases;
 
@@ -149,6 +153,43 @@ class Calendar extends MiscModel
         }
 
         return $this->loadedWeekdays;
+    }
+
+    /**
+     * Get the hours decoded from json
+     */
+    public function hours(): array
+    {
+        if (isset($this->loadedHours)) {
+            return $this->loadedHours;
+        }
+
+        return (array) $this->loadedHours = ! empty($this->hours)
+            ? json_decode(strip_tags($this->hours), true)
+            : [];
+    }
+
+    /**
+     * Get the number of hours in a day, defaulting to 24
+     */
+    public function hoursInDay(): int
+    {
+        $hours = $this->hours();
+
+        return ! empty($hours) ? count($hours) : 24;
+    }
+
+    /**
+     * Get hour name by index, falling back to the index number
+     */
+    public function hourName(int $index): string
+    {
+        $hours = $this->hours();
+        if (! empty($hours) && isset($hours[$index])) {
+            return $hours[$index]['name'] ?? (string) $index;
+        }
+
+        return sprintf('%02d:00', $index);
     }
 
     /**
