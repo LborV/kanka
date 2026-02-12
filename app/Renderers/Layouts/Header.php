@@ -89,10 +89,10 @@ class Header
         }
 
         if ($this->orderDir == 'asc') {
-            return 'fa-regular fa-arrow-up-a-z';
+            return 'fa-solid fa-arrow-up-a-z';
         }
 
-        return 'fa-regular fa-arrow-down-z-a';
+        return 'fa-solid-arrow-down-z-a';
     }
 
     public function route(): string

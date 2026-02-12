@@ -32,7 +32,7 @@ class CampaignUser extends Layout
                 'render' => function (\App\Models\CampaignUser $model) {
                     $html = '<a class="block break-all truncate text-link" href="' . route('users.profile', [$model->user]) . '" target="_blank">' . $model->user->name . '</a>';
                     if ($model->user->isBanned()) {
-                        $html .= '<i class="fa-regular fa-ban" aria-hidden="true" data-toggle="tooltip" data-title = "' . __('campaigns.members.fields.banned') . '"></i>';
+                        $html .= '<i class="fa-solid fa-ban" aria-hidden="true" data-toggle="tooltip" data-title = "' . __('campaigns.members.fields.banned') . '"></i>';
                     }
 
                     return $html;
@@ -55,7 +55,7 @@ class CampaignUser extends Layout
                     $html = (string) implode(', ', $roleLinks);
 
                     if (auth()->user()->can('update', $model)) {
-                        $html .= ' <i href="' . route('campaign.members.roles', [$this->campaign, $model->id]) . '" class="fa-regular fa-pencil cursor-pointer"
+                        $html .= ' <i href="' . route('campaign.members.roles', [$this->campaign, $model->id]) . '" class="fa-solid-pencil cursor-pointer"
                             data-toggle="dialog-ajax" data-target="new-invite" data-url="' . route('campaign.members.roles', [$this->campaign, $model->id]) . '" data-tooltip data-title="' . __('campaigns/members.roles.title') . '" aria-label="' . __('campaigns/members.roles.title') . '">
                         </i>';
                     }
@@ -96,13 +96,13 @@ class CampaignUser extends Layout
         return [
             'switch' => [
                 'label' => 'campaigns.members.actions.switch',
-                'icon' => 'fa-regular fa-sign-in-alt',
+                'icon' => 'fa-solid-sign-in-alt',
                 'can' => 'switch',
                 'route' => 'identity.switch',
             ],
             'delete' => [
                 'label' => 'campaigns.members.actions.remove',
-                'icon' => 'fa-regular fa-trash-can',
+                'icon' => 'fa-solid-trash-can',
                 'can' => 'delete',
                 'type' => 'dialog-ajax',
                 'route' => 'campaign_users.delete',

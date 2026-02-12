@@ -36,26 +36,31 @@ class Icon extends Component
      */
     protected function map(string $class): string
     {
+        // Convert duotone to solid for self-hosted instances
+        if (str_contains($class, 'fa-duotone')) {
+            $class = str_replace('fa-duotone', 'fa-solid', $class);
+        }
+
         return match ($class) {
-            'map' => 'fa-regular fa-map',
-            'check' => 'fa-regular fa-check',
-            'trash' => 'fa-regular fa-trash-can',
-            'plus' => 'fa-regular fa-plus',
-            'question' => 'fa-regular fa-question-circle',
-            'save' => 'fa-regular fa-save',
-            'pencil' => 'fa-regular fa-pencil',
-            'cog' => 'fa-regular fa-cog',
-            'copy' => 'fa-regular fa-copy',
-            'edit' => 'fa-regular fa-edit',
-            'premium' => 'fa-regular fa-gem',
-            'lock' => 'fa-regular fa-lock',
-            'filter' => 'fa-regular fa-filter',
+            'map' => 'fa-solid fa-map',
+            'check' => 'fa-solid-check',
+            'trash' => 'fa-solid-trash-can',
+            'plus' => 'fa-solid-plus',
+            'question' => 'fa-solid-question-circle',
+            'save' => 'fa-solid-save',
+            'pencil' => 'fa-solid-pencil',
+            'cog' => 'fa-solid-cog',
+            'copy' => 'fa-solid-copy',
+            'edit' => 'fa-solid-edit',
+            'premium' => 'fa-solid-gem',
+            'lock' => 'fa-solid-lock',
+            'filter' => 'fa-solid-filter',
             'load' => 'fa-solid fa-spinner fa-spin',
-            'arrow' => 'fa-regular fa-arrow-right',
-            'permissions' => 'fa-regular fa-user-shield',
-            'attributes' => 'fa-regular fa-rectangle-list',
-            'link' => 'fa-regular fa-external-link',
-            'sort' => 'fa-regular fa-grip-vertical',
+            'arrow' => 'fa-solid-arrow-right',
+            'permissions' => 'fa-solid-user-shield',
+            'attributes' => 'fa-solid-rectangle-list',
+            'link' => 'fa-solid-external-link',
+            'sort' => 'fa-solid-grip-vertical',
             default => $class,
         };
     }

@@ -85,7 +85,7 @@ const handleLinkKeydown = (event: KeyboardEvent) => {
             class="hover:text-base-content"
             title="Open in a new window"
         >
-            <i class="fa-regular fa-external-link-alt" />
+            <i class="fa-solid fa-external-link-alt" />
         </a>
         <button
             v-if="editor.isActive('link')"
@@ -93,7 +93,7 @@ const handleLinkKeydown = (event: KeyboardEvent) => {
             class="hover:text-error"
             title="Remove link"
         >
-            <i class="fa-regular fa-unlink" aria-label="Removal icon" />
+            <i class="fa-solid-unlink" aria-label="Removal icon" />
         </button>
     </div>
 </template>

@@ -124,7 +124,7 @@ class ExportsTable extends Component
                 Storage::disk('s3')->setVisibility($model->path, 'public');
             }
             $html = '<a class="flex items-center gap-1 text-link" href="' . Storage::disk('s3')->url($model->path) . '">' .
-                '<i class="fa-regular fa-download" aria-hidden="true"></i>' .
+                '<i class="fa-solid fa-download" aria-hidden="true"></i>' .
                 __('campaigns/export.actions.download') .
                 '</a>';
 
@@ -137,10 +137,10 @@ class ExportsTable extends Component
     public function sortIcon(): string
     {
 
-        $icon = 'fa-regular fa-arrow-down-z-a';
+        $icon = 'fa-solid-arrow-down-z-a';
 
         if ($this->sortDirection == 'asc') {
-            $icon = 'fa-regular fa-arrow-up-a-z';
+            $icon = 'fa-solid-arrow-up-a-z';
         }
 
         return '<i class="' . $icon . ' mr-0!"></i>';

@@ -6,13 +6,13 @@
         <ul class="flex flex-col gap-2 lg:gap-3 xl:gap-4 list-none m-0 px-1">
         <li>
             <a href="https://docs.kanka.io/" class="text-link">
-               <x-icon class="fa-regular fa-book" />
+               <x-icon class="fa-solid fa-book" />
                {{ __('footer.documentation') }}
             </a>
         </li>
         <li>
             <a href="{{ \App\Facades\Domain::toFront('kb') }}" class="text-link">
-               <x-icon class="fa-regular fa-question-circle" />
+               <x-icon class="fa-solid-question-circle" />
                {{ __('footer.kb') }}
             </a>
         </li>
@@ -24,16 +24,18 @@
         </li>
             <li>
                 <a href="{{ \App\Facades\Domain::toFront('campaigns') }}" class="text-link">
-                    <x-icon class="fa-regular fa-globe" />
+                    <x-icon class="fa-solid-globe" />
                     {{ __('footer.public-campaigns') }}
                 </a>
             </li>
-            <li>
-                <a href="{{ route('settings.subscription') }}" class="text-link">
-                    <x-icon class="fa-regular fa-gem" />
-                    {{ trim(__('misc.ads.member'), '.') }}
-                </a>
-            </li>
+            @if (Route::has('settings.subscription'))
+                <li>
+                    <a href="{{ route('settings.subscription') }}" class="text-link">
+                        <x-icon class="fa-solid-gem" />
+                        {{ trim(__('misc.ads.member'), '.') }}
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
 </x-box>

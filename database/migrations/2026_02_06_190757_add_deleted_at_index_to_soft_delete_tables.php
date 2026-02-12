@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -40,6 +41,16 @@ return new class extends Migration
     public function up(): void
     {
         foreach ($this->tables as $tableName) {
+            if (!Schema::hasTable($tableName) || !Schema::hasColumn($tableName, 'deleted_at')) {
+                continue;
+            }
+
+            $indexName = $tableName . '_deleted_at_index';
+            $indexExists = !empty(DB::select("SHOW INDEX FROM `{$tableName}` WHERE Key_name = ?", [$indexName]));
+            if ($indexExists) {
+                continue;
+            }
+
             Schema::table($tableName, function (Blueprint $table) {
                 $table->index('deleted_at');
             });
@@ -52,6 +63,16 @@ return new class extends Migration
     public function down(): void
     {
         foreach ($this->tables as $tableName) {
+            if (!Schema::hasTable($tableName) || !Schema::hasColumn($tableName, 'deleted_at')) {
+                continue;
+            }
+
+            $indexName = $tableName . '_deleted_at_index';
+            $indexExists = !empty(DB::select("SHOW INDEX FROM `{$tableName}` WHERE Key_name = ?", [$indexName]));
+            if (!$indexExists) {
+                continue;
+            }
+
             Schema::table($tableName, function (Blueprint $table) {
                 $table->dropIndex(['deleted_at']);
             });

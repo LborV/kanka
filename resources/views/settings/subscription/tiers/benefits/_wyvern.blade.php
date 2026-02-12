@@ -1,9 +1,9 @@
 <div class="flex gap-1 text-base">
     <div class="w-8 shrink-0 text-center">
         @if (auth()->user()->hasBoosterNomenclature())
-            <x-icon class="fa-regular fa-rocket text-boost" />
+            <x-icon class="fa-solid fa-rocket text-boost" />
         @else
-            <x-icon class="fa-regular fa-gem text-boost" />
+            <x-icon class="fa-solid-gem text-boost" />
         @endif
     </div>
     <div class="flex flex-col gap-0.5">
@@ -23,7 +23,7 @@
 
 <div class="flex gap-1">
     <div class="w-8 shrink-0 text-center">
-        <x-icon class="fa-regular fa-image" />
+        <x-icon class="fa-solid-image" />
     </div>
     {{ __('tiers.features.file_size', ['size' => config('limits.filesize.image.wyvern') . ' MiB']) }}
 </div>
@@ -38,7 +38,7 @@
 
 <div class="flex gap-1">
     <div class="w-8 shrink-0 text-center">
-        <x-icon class="fa-regular fa-upload" />
+        <x-icon class="fa-solid-upload" />
     </div>
     <a href="https://docs.kanka.io/en/latest/features/campaigns/import.html" class="text-link">
         {{ __('tiers.features.import') }}
@@ -47,14 +47,14 @@
 
 <div class="flex gap-1">
     <div class="w-8 shrink-0 text-center">
-        <x-icon class="fa-regular fa-grid" />
+        <x-icon class="fa-solid-grid" />
     </div>
     {{ __('tiers.features.pagination', ['amount' => 100]) }}
 </div>
 
 <div class="flex gap-1">
     <div class="w-8 shrink-0 text-center">
-        <x-icon class="fa-regular fa-webhook" />
+        <x-icon class="fa-solid-webhook" />
     </div>
     <a href="{{ route('larecipe.index') }}" class="text-link">
         {{ __('tiers.features.api_requests', ['amount' => config('limits.api.throttle.subscriber')]) }}

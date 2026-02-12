@@ -20,11 +20,11 @@ $highlightClass = 'shadow-xs border-primary border-solid border-2';
                 <div class="{{ $boxClass }} {{ $highlight === 'dark' ? $highlightClass : '' }}">
                     <div class="flex gap-2 justify-between items-center mb-2">
                         <div class="font-light text-xl flex items-center gap-2">
-                            <x-icon class="fa-regular fa-moon-over-sun" />
+                            <x-icon class="fa-solid fa-moon-over-sun" />
                             {{ __('settings/appearance.fields.theme') }}
                         </div>
                         <a href="https://docs.kanka.io/en/latest/account/appearance.html#theme" target="_blank" class="text-link" data-tooltip data-title="{{ __('settings/appearance.actions.learn-more') }}">
-                            <x-icon class="fa-regular fa-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
+                            <x-icon class="fa-solid-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
                         </a>
                     </div>
                     <x-helper>
@@ -44,11 +44,11 @@ $highlightClass = 'shadow-xs border-primary border-solid border-2';
                 <div class="{{ $boxClass }} {{ $highlight === 'pagination' ? $highlightClass : '' }}">
                     <div class="flex gap-2 justify-between items-center mb-2">
                         <div class="font-light text-xl flex items-center gap-2">
-                            <x-icon class="fa-regular fa-list" />
+                            <x-icon class="fa-solid-list" />
                             {{ __('settings/appearance.fields.pagination') }}
                         </div>
                         <a href="https://docs.kanka.io/en/latest/account/appearance.html#results-per-page" target="_blank" class="text-link" data-tooltip data-title="{{ __('settings/appearance.actions.learn-more') }}">
-                            <x-icon class="fa-regular fa-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
+                            <x-icon class="fa-solid-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
                         </a>
                     </div>
                     <x-helper>
@@ -61,11 +61,11 @@ $highlightClass = 'shadow-xs border-primary border-solid border-2';
                 <div class="{{ $boxClass }}">
                     <div class="flex gap-2 justify-between items-center mb-2">
                         <div class="font-light text-xl flex items-center gap-2">
-                            <x-icon class="fa-regular fa-calendar" />
+                            <x-icon class="fa-solid-calendar" />
                             {{ __('settings/appearance.fields.date-format') }}
                         </div>
                         <a href="https://docs.kanka.io/en/latest/account/appearance.html#date-formatting" target="_blank" class="text-link" data-tooltip data-title="{{ __('settings/appearance.actions.learn-more') }}">
-                            <x-icon class="fa-regular fa-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
+                            <x-icon class="fa-solid-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
                         </a>
                     </div>
 
@@ -85,11 +85,11 @@ $highlightClass = 'shadow-xs border-primary border-solid border-2';
                 <div class="{{ $boxClass }} {{ $highlight === 'campaign-switcher' ? $highlightClass : '' }}">
                     <div class="flex gap-2 justify-between items-center mb-2">
                         <div class="font-light text-xl flex items-center gap-2">
-                            <x-icon class="fa-regular fa-arrow-down-a-z" />
+                            <x-icon class="fa-solid-arrow-down-a-z" />
                             {{ __('settings/appearance.fields.campaign-order') }}
                         </div>
                         <a href="https://docs.kanka.io/en/latest/account/appearance.html#campaign-order" target="_blank" class="text-link" data-tooltip data-title="{{ __('settings/appearance.actions.learn-more') }}">
-                            <x-icon class="fa-regular fa-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
+                            <x-icon class="fa-solid-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
                         </a>
                     </div>
 
@@ -113,11 +113,11 @@ $highlightClass = 'shadow-xs border-primary border-solid border-2';
                         x-data="{ editor: '{{ auth()->user()->editor }}' }">
                         <div class="flex gap-2 justify-between">
                             <div class="font-light text-xl flex items-center gap-2">
-                                <x-icon class="fa-regular fa-typewriter" />
+                                <x-icon class="fa-solid-typewriter" />
                                 {{ __('settings/appearance.fields.editor') }}
                             </div>
                             <a href="https://docs.kanka.io/en/latest/account/appearance.html#text-editor" target="_blank" class="text-link" data-tooltip data-title="{{ __('settings/appearance.actions.learn-more') }}">
-                                <x-icon class="fa-regular fa-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
+                                <x-icon class="fa-solid-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
                             </a>
                         </div>
                         <p class="text-sm grow">{{ __('settings/appearance.helpers.editors') }}</p>
@@ -144,11 +144,11 @@ $highlightClass = 'shadow-xs border-primary border-solid border-2';
                 <div class="{{ $boxClass }} {{ $highlight === 'explore' ? $highlightClass : '' }}">
                     <div class="flex gap-2 justify-between items-center mb-2">
                         <div class="font-light text-xl flex items-center gap-2">
-                            <x-icon class="fa-regular fa-grid" />
+                            <x-icon class="fa-solid-grid" />
                             {{ __('settings/appearance.fields.entity-explore') }}
                         </div>
                         <a href="https://docs.kanka.io/en/latest/account/appearance.html#entity-explore" target="_blank" class="text-link" data-tooltip data-title="{{ __('settings/appearance.actions.learn-more') }}">
-                            <x-icon class="fa-regular fa-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
+                            <x-icon class="fa-solid-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
                         </a>
                     </div>
                     <x-helper>
@@ -159,7 +159,7 @@ $highlightClass = 'shadow-xs border-primary border-solid border-2';
                         name="entity_explore"
                         radio
                         :options="[
-                            0 => '<i class=\'fa-regular fa-grid\' aria-hidden=\'true\'></i> ' . __('settings/appearance.explore.grid'),
+                            0 => '<i class=\'fa-solid-grid\' aria-hidden=\'true\'></i> ' . __('settings/appearance.explore.grid'),
                             1 => '<i class=\'fa-solid fa-list-ul\' aria-hidden=\'true\'></i> ' . __('settings/appearance.explore.table'),
                         ]"
                         :selected="auth()->user()->entity_explore"
@@ -170,11 +170,11 @@ $highlightClass = 'shadow-xs border-primary border-solid border-2';
                 <div class="{{ $boxClass }}">
                     <div class="flex gap-2 justify-between items-center mb-2">
                         <div class="font-light text-xl flex items-center gap-2">
-                            <x-icon class="fa-regular fa-at" />
+                            <x-icon class="fa-solid-at" />
                             {{ __('settings/appearance.fields.mentions') }}
                         </div>
                         <a href="https://docs.kanka.io/en/latest/account/appearance.html#mentions" target="_blank" class="text-link" data-tooltip data-title="{{ __('settings/appearance.actions.learn-more') }}">
-                            <x-icon class="fa-regular fa-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
+                            <x-icon class="fa-solid-arrow-up-right-from-square" /> {{ __('general.learn-more') }}
                         </a>
                     </div>
                     <x-helper>

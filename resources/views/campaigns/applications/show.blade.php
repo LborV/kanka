@@ -36,7 +36,7 @@
 
             <div class="flex items-center justify-between gap-4 mb-5">
                 <button type="submit" class="btn2 btn-error btn-outline" name="action" value="reject">
-                    <x-icon class="fa-regular fa-times" />
+                    <x-icon class="fa-solid fa-times" />
                     {{ __('campaigns/applications.actions.reject') }}
                 </button>
 

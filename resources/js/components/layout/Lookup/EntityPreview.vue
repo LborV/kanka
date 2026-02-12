@@ -5,10 +5,10 @@
             <a class="text-2xl font-extrabold entity-name" v-bind:href="entity.link" :title="entity.name" v-html="entity.name">
             </a>
 
-            <i class="fa-regular fa-skull mx-2" aria-hidden="true" v-if="entity.is_dead"></i>
+            <i class="fa-solid fa-skull mx-2" aria-hidden="true" v-if="entity.is_dead"></i>
 
             <a class="ml-2 text-xs" target="_blank" v-bind:href="entity.link">
-                <i class="fa-regular fa-external-link" aria-hidden="true" aria-label="Open in a new window"></i>
+                <i class="fa-solid-external-link" aria-hidden="true" aria-label="Open in a new window"></i>
             </a>
         </div>
         <div class="block w-full" v-if="hasTitle()" v-html="entity.title">
@@ -28,7 +28,7 @@
            v-bind:href="entity.location.link"
            :data-tag="entity.id"
         >
-            <i class="fa-duotone circle-location-arrow" aria-hidden="true" aria-label="Location"></i>
+            <i class="fa-solid fa-circle-location-arrow" aria-hidden="true" aria-label="Location"></i>
             {{ entity.location.name }}
         </a>
         <div class="flex gap-1 items-center my-2" v-else-if="entity.locations">
@@ -37,7 +37,7 @@
                v-bind:href="location.link"
                :data-tag="location.id"
             >
-                <i class="fa-duotone circle-location-arrow" aria-hidden="true" aria-label="Location"></i>
+                <i class="fa-solid fa-circle-location-arrow" aria-hidden="true" aria-label="Location"></i>
                 {{ location.name }}
             </a>
         </div>

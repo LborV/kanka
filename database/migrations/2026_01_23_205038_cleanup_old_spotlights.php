@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -11,9 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('campaigns', function (Blueprint $table) {
+        $hasCampaignsIndex = !empty(DB::select("SHOW INDEX FROM `campaigns` WHERE Key_name = 'campaigns_idx'"));
+
+        Schema::table('campaigns', function (Blueprint $table) use ($hasCampaignsIndex) {
             // $table->dropIndex('campaigns_idx');
-            $table->index(['visibility_id', 'visible_entity_count', 'is_hidden'], 'campaigns_idx');
+            if (!$hasCampaignsIndex) {
+                $table->index(['visibility_id', 'visible_entity_count', 'is_hidden'], 'campaigns_idx');
+            }
             $table->dropColumn('is_featured');
             $table->dropColumn('featured_until');
             $table->dropColumn('featured_reason');

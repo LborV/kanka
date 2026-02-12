@@ -36,19 +36,19 @@ $moduleName = isset($entityType) ? $entityType->name() : $entity->entityType->na
             </div>
             <div class="" data-title="{{ __('permissions.helpers.view') }}" data-tooltip>
                 <span class="hidden md:inline font-medium">{{ __('crud.permissions.actions.view') }}</span>
-                <x-icon class="fa-regular fa-eye md:hidden" />
+                <x-icon class="fa-solid fa-eye md:hidden" />
             </div>
             <div class="" data-title="{{ __('permissions.helpers.edit') }}" data-tooltip>
                 <span class="hidden md:inline font-medium">{{ __('crud.permissions.actions.edit') }}</span>
-                <x-icon class="fa-regular fa-edit md:hidden" />
+                <x-icon class="fa-solid-edit md:hidden" />
             </div>
             <div class="" data-title="{{ __('permissions.helpers.delete') }}" data-tooltip>
                 <span class="hidden md:inline font-medium">{{ __('crud.permissions.actions.delete') }}</span>
-                <x-icon class="fa-regular fa-trash-can md:hidden" />
+                <x-icon class="fa-solid-trash-can md:hidden" />
             </div>
             <div class="" data-title="{{ __('campaigns.roles.permissions.helpers.entity_note') }}" data-tooltip>
                 <span class="hidden md:inline font-medium">{{ __('entities.posts') }}</span>
-                <x-icon class="fa-regular fa-note-sticky md:hidden" />
+                <x-icon class="fa-solid-note-sticky md:hidden" />
             </div>
             @if ($hasActionCol)
                 <div class="">
@@ -65,7 +65,7 @@ $moduleName = isset($entityType) ? $entityType->name() : $entity->entityType->na
                             {!! $role->name !!}
                         </a>
                         @if ($role->isPublic() && !$campaign->isPublic())
-                            <x-icon class="fa-regular fa-exclamation-triangle" tooltip :title="__('campaigns.roles.permissions.helpers.not_public')" />
+                            <x-icon class="fa-solid-exclamation-triangle" tooltip :title="__('campaigns.roles.permissions.helpers.not_public')" />
                         @endif
                     @else
                         {!! $role->name !!}
@@ -158,19 +158,19 @@ $moduleName = isset($entityType) ? $entityType->name() : $entity->entityType->na
 
                 <div class="" data-title="{{ __('permissions.helpers.view') }}" data-tooltip>
                     <span class="hidden md:inline font-medium">{{ __('crud.permissions.actions.view') }}</span>
-                    <x-icon class="fa-regular fa-eye md:hidden" />
+                    <x-icon class="fa-solid-eye md:hidden" />
                 </div>
                 <div class="" data-title="{{ __('permissions.helpers.edit') }}" data-tooltip>
                     <span class="hidden md:inline font-medium">{{ __('crud.permissions.actions.edit') }}</span>
-                    <x-icon class="fa-regular fa-edit md:hidden" />
+                    <x-icon class="fa-solid-edit md:hidden" />
                 </div>
                 <div class="" data-title="{{ __('permissions.helpers.delete') }}" data-tooltip>
                     <span class="hidden md:inline font-medium">{{ __('crud.permissions.actions.delete') }}</span>
-                    <x-icon class="fa-regular fa-trash-can md:hidden"  />
+                    <x-icon class="fa-solid-trash-can md:hidden"  />
                 </div>
                 <div class="" data-title="{{ __('campaigns.roles.permissions.helpers.entity_note') }}" data-tooltip>
                     <span class="hidden md:inline font-medium">{{ __('entities.posts') }}</span>
-                    <x-icon class="fa-regular fa-sticky-note md:hidden" />
+                    <x-icon class="fa-solid-sticky-note md:hidden" />
                 </div>
                 @if ($hasActionCol)
                     <div class="">

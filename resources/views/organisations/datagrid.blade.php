@@ -16,7 +16,7 @@
             'visible' => $campaign->enabled('locations'),
         ],
         [
-            'label' => '<i class="fa-regular fa-users" title="' . trans('organisations.fields.members') . '"></i>',
+            'label' => '<i class="fa-solid fa-users" title="' . trans('organisations.fields.members') . '"></i>',
             'visible' => $campaign->enabled('characters'),
             'render' => function($model) {
                 return number_format($model->members_count);
@@ -24,11 +24,11 @@
             'disableSort' => true,
         ],
         [
-            'label' => '<i class="fa-regular fa-shop-slash" title="' . __('organisations.fields.is_defunct') . '"></i>',
+            'label' => '<i class="fa-solid-shop-slash" title="' . __('organisations.fields.is_defunct') . '"></i>',
             'field' => 'is_defunct',
             'render' => function($model) {
                 if ($model->isDefunct()) {
-                    return '<i class="fa-regular fa-shop-slash" title="' . __('organisations.fields.is_defunct') . '"></i>';
+                    return '<i class="fa-solid-shop-slash" title="' . __('organisations.fields.is_defunct') . '"></i>';
                 }
                 return '';
             },

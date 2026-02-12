@@ -9,7 +9,7 @@
         'name',
         'type',
         [
-            'label' => '<i class="fa-regular fa-chalkboard" data-toggle="tooltip" data-title="' . __('whiteboards.actions.draw') . '"></i>',
+            'label' => '<i class="fa-solid fa-chalkboard" data-toggle="tooltip" data-title="' . __('whiteboards.actions.draw') . '"></i>',
             'render' => function($model) use ($campaign) {
                 return \Illuminate\Support\Facades\Blade::render('whiteboards._draw-link', ['model' => $model, 'campaign' => $campaign]);
             },

@@ -12,10 +12,10 @@
                 <div
                     v-if="entity.is_private && !selecting"
                     class="bubble-private absolute left-1.5 top-1.5 text-xs shadow-xs flex justify-center align-items-center items-center aspect-square rounded-full w-6 h-6 bg-box opacity-80 text-base-content" :title="i18n.is_private">
-                        <i class="fa-regular fa-lock"  v-bind:aria-label="i18n.is_private" />
+                        <i class="fa-solid fa-lock"  v-bind:aria-label="i18n.is_private" />
                 </div>
                 <div v-else-if="selecting" :class="selectorClass()">
-                    <i v-if="entity.selected" class="fa-regular fa-check" aria-label="selected" />
+                    <i v-if="entity.selected" class="fa-solid-check" aria-label="selected" />
                 </div>
             </a>
             <a
@@ -47,10 +47,10 @@
             <div
                 v-if="entity.is_private && !selecting"
                 class="bubble-private absolute left-1.5 top-1.5 text-xs shadow-xs flex justify-center align-items-center items-center aspect-square rounded-full w-6 h-6 bg-box opacity-80 text-base-content" :title="i18n.is_private">
-                <i class="fa-regular fa-lock" v-bind:aria-label="i18n.is_private" />
+                <i class="fa-solid-lock" v-bind:aria-label="i18n.is_private" />
             </div>
             <div v-else-if="selecting" :class="selectorClass()">
-                <i v-if="entity.selected" class="fa-regular fa-check" aria-label="selected" />
+                <i v-if="entity.selected" class="fa-solid-check" aria-label="selected" />
             </div>
         </a>
         <a
@@ -69,7 +69,7 @@
         <div class="flex items-center gap-4">
             <div v-if="selecting"
                  class="w-5 h-5 cursor-pointer border rounded-full text-center ">
-                <i v-if="entity.selected" class="fa-regular fa-check" aria-label="selected" />
+                <i v-if="entity.selected" class="fa-solid-check" aria-label="selected" />
 
             </div>
 
@@ -99,7 +99,7 @@
                 <a v-for="tag in entity.tags" :href="tag.urls.show" :class="tagClass(tag)" v-html="tag.shortname" :title="tag.name" />
             </div>
 
-            <i class="fa-regular fa-lock" v-if="entity.is_private" v-bind:aria-label="i18n.is_private" :title="i18n.is_private" />
+            <i class="fa-solid-lock" v-if="entity.is_private" v-bind:aria-label="i18n.is_private" :title="i18n.is_private" />
         </div>
     </div>
     <div
@@ -108,7 +108,7 @@
         :title="entity.name"
         class="flex items-center justify-center gap-2 cursor-pointer text-xs p-0.5 hover:bg-base-200 rounded-xl"
         aria-label="Show children">
-        <i class="fa-regular fa-angles-down" aria-hidden="true" />
+        <i class="fa-solid-angles-down" aria-hidden="true" />
         <span v-html="entity.children" />
     </div>
     <span v-if="loadingChildren" class="text-center">

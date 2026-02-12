@@ -17,7 +17,7 @@ $permissions = [
                 <x-grid class="perm-row">
                     <div class="join">
                         <span class="join-item flex items-center p-2">
-                            <x-icon class="fa-regular fa-users" />
+                            <x-icon class="fa-solid fa-users" />
                         </span>
                         <input type="text" value="{!! $perm->role->name !!}" disabled="disabled" class="" />
                     </div>
@@ -36,7 +36,7 @@ $permissions = [
                 <x-grid class="perm-row">
                     <div class="join">
                         <span class="join-item flex items-center p-2">
-                            <x-icon class="fa-regular fa-user" />
+                            <x-icon class="fa-solid-user" />
                         </span>
                         <input type="text" value="{!! $perm->user->name !!}" disabled="disabled" class="w-full" />
                     </div>
@@ -56,11 +56,11 @@ $permissions = [
     </div>
     <div class="join">
         <a href="#" class="join-item btn2 btn-sm btn-outline" data-toggle="dialog" data-target="post-new-user">
-            <x-icon class="fa-regular fa-user" />
+            <x-icon class="fa-solid-user" />
             {{ __('posts.permissions.actions.members') }}
         </a>
         <a href="#" class="join-item btn2 btn-sm btn-outline" data-toggle="dialog" data-target="post-new-role">
-            <x-icon class="fa-regular fa-users" />
+            <x-icon class="fa-solid-users" />
             {{ __('posts.permissions.actions.roles') }}
         </a>
     </div>
@@ -100,7 +100,7 @@ $permissions = [
         <x-grid id="post-perm-user-template" class="perm-row">
             <div class="join">
                 <span class="join-item flex items-center p-2">
-                    <x-icon class="fa-regular fa-user" />
+                    <x-icon class="fa-solid-user" />
                 </span>
                 <input type="text" value="$SELECTEDNAME$" disabled="disabled" class="w-full join-item" />
             </div>
@@ -116,7 +116,7 @@ $permissions = [
         <x-grid id="post-perm-role-template" class="perm-row">
             <div class="join">
                 <span class="join-item flex items-center p-2">
-                    <x-icon class="fa-regular fa-users" />
+                    <x-icon class="fa-solid-users" />
                 </span>
                 <input type="text" value="$SELECTEDNAME$" disabled="disabled" class="w-full join-item" />
             </div>

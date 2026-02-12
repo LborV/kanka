@@ -51,7 +51,7 @@ $seasonTypes = [
                 <div class="grid gap-2 grid-cols-2 md:grid-cols-4 md:gap-4">
                     <div class="flex gap-2 items-center">
                         <div class="sortable-handler p-2 cursor-move">
-                            <x-icon class="fa-regular fa-grip-vertical" />
+                            <x-icon class="fa-solid fa-grip-vertical" />
                         </div>
                         <div class="grow field">
                             <label class="sr-only">{{ __('calendars.parameters.seasons.name') }}</label>
@@ -92,7 +92,7 @@ $seasonTypes = [
         <div class="grid gap-2 grid-cols-2 md:grid-cols-4 md:gap-4">
             <div class="flex gap-2 items-center">
                 <div class="sortable-handler p-2 cursor-move">
-                    <x-icon class="fa-regular fa-grip-vertical" />
+                    <x-icon class="fa-solid-grip-vertical" />
                 </div>
                 <div class="grow field">
                     <label class="sr-only">{{ __('calendars.parameters.seasons.name') }}</label>

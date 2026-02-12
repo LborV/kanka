@@ -109,7 +109,7 @@
 
             @if ($filterService->activeFiltersCount() > 0)
                 <a href="{{ $resetRoute }}" class="btn2 btn-sm btn-error btn-outline">
-                    <x-icon class="fa-regular fa-eraser" />
+                    <x-icon class="fa-solid fa-eraser" />
                     {{ __('crud.filters.mobile.clear') }}
                 </a>
             @endif

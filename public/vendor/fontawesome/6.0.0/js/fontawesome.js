@@ -283,7 +283,7 @@
     'fas': 'solid',
     'fa-solid': 'solid',
     'far': 'regular',
-    'fa-regular': 'regular',
+    'fa-solid': 'regular',
     'fal': 'light',
     'fa-light': 'light',
     'fat': 'thin',
@@ -310,7 +310,7 @@
     'fad': 'fa-duotone',
     'fak': 'fa-kit',
     'fal': 'fa-light',
-    'far': 'fa-regular',
+    'far': 'fa-solid
     'fas': 'fa-solid',
     'fat': 'fa-thin'
   };
@@ -319,7 +319,7 @@
     'fa-duotone': 'fad',
     'fa-kit': 'fak',
     'fa-light': 'fal',
-    'fa-regular': 'far',
+    'fa-solid 'far',
     'fa-solid': 'fas',
     'fa-thin': 'fat'
   };

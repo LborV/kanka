@@ -81,7 +81,7 @@ $breadcrumb = Breadcrumb::campaign($campaign)->entity($entity)->list();
                     </x-dropdowns.item>
                     <x-dropdowns.divider />
                     <x-dropdowns.item
-                        icon="fa-regular fa-shuffle"
+                        icon="fa-solid fa-shuffle"
                         :link="route('entities.image.replace', [$campaign, $entity])"
                         :dialog="route('entities.image.replace', [$campaign, $entity])">
                         {{ __('entities/image.actions.replace_image') }}
@@ -89,20 +89,20 @@ $breadcrumb = Breadcrumb::campaign($campaign)->entity($entity)->list();
 
                     @if ($campaign->boosted())
                         <x-dropdowns.item
-                            icon="fa-regular fa-crosshairs"
+                            icon="fa-solid-crosshairs"
                             :link="route('entities.image.focus', [$campaign, $entity])">
                             {{ __('entities/image.actions.change_focus') }}</x-dropdowns.item>
                     @else
                         <x-dropdowns.item
                             link="#"
-                            icon="fa-regular fa-crosshairs"
+                            icon="fa-solid-crosshairs"
                             popup="booster-cta">
                             {{ __('entities/image.actions.change_focus') }}</x-dropdowns.item>
                     @endif
 
                     @if ($entity->image)
                     <x-dropdowns.item
-                        icon="fa-regular fa-eye"
+                        icon="fa-solid-eye"
                         :link="route('gallery.file.visibility', [$campaign, $entity->image])"
                         :dialog="route('gallery.file.visibility', [$campaign, $entity->image])"
                         >
@@ -138,56 +138,56 @@ $breadcrumb = Breadcrumb::campaign($campaign)->entity($entity)->list();
             </h1>
             @if ($entity->isCharacter() && $entity->child->isDead())
                 <span class="entity-name-icon entity-char-dead md:text-2xl" data-toggle="tooltip" data-title="{{ __('characters.hints.is_dead') }}">
-                    <x-icon class="fa-regular fa-skull entity-icons" />
+                    <x-icon class="fa-solid-skull entity-icons" />
                     <span class="sr-only">{{ __('characters.hints.is_dead') }}</span>
                 </span>
             @endif
             @if ($entity->isQuest() && $entity->child->isCompleted())
                 <span class="entity-name-icon entity-quest-complete md:text-2xl" data-toggle="tooltip" data-title="{{ __('quests.fields.is_completed') }}">
-                    <x-icon class="fa-regular fa-check-circle entity-icons" />
+                    <x-icon class="fa-solid-check-circle entity-icons" />
                     <span class="sr-only">{{ __('quests.fields.is_completed') }}</span>
                 </span>
             @endif
             @if ($entity->isOrganisation() && $entity->child->isDefunct())
                 <span class="entity-name-icon entity-org-defunct md:text-2xl" data-toggle="tooltip" data-title="{{ __('organisations.hints.is_defunct') }}">
-                    <x-icon class="fa-regular fa-shop-slash entity-icons " />
+                    <x-icon class="fa-solid-shop-slash entity-icons " />
                     <span class="sr-only">{{ __('organisations.hints.is_defunct') }}</span>
                 </span>
             @endif
             @if ($entity->isLocation() && $entity->child->isDestroyed())
                 <span class="entity-name-icon entity-loc-destroyed md:text-2xl" data-toggle="tooltip" data-title="{{ __('locations.hints.is_destroyed') }}">
-                    <x-icon class="fa-regular fa-building-circle-xmark " />
+                    <x-icon class="fa-solid-building-circle-xmark " />
                     <span class="sr-only">{{ __('locations.hints.is_destroyed') }}</span>
                 </span>
             @endif
             @if ($entity->isRace() && $entity->child->isExtinct())
                 <span class="entity-name-icon entity-rac-extinct md:text-2xl" data-toggle="tooltip" data-title="{{ __('races.hints.is_extinct') }}">
-                    <x-icon class="fa-regular fa-skull-cow entity-icons " />
+                    <x-icon class="fa-solid-skull-cow entity-icons " />
                     <span class="sr-only">{{ __('races.hints.is_extinct') }}</span>
                 </span>
             @endif
             @if ($entity->isCreature() && $entity->child->isExtinct())
                 <span class="entity-name-icon entity-cre-extinct md:text-2xl" data-toggle="tooltip" data-title="{{ __('creatures.hints.is_extinct') }}">
-                    <x-icon class="fa-regular fa-skull-cow entity-icons " />
+                    <x-icon class="fa-solid-skull-cow entity-icons " />
                     <span class="sr-only">{{ __('creatures.hints.is_extinct') }}</span>
                 </span>
             @endif
             @if ($entity->isCreature() && $entity->child->isDead())
                 <span class="entity-name-icon entity-cre-dead md:text-2xl" data-toggle="tooltip" data-title="{{ __('creatures.hints.is_dead') }}">
-                    <x-icon class="fa-regular fa-skull entity-icons " />
+                    <x-icon class="fa-solid-skull entity-icons " />
                     <span class="sr-only">{{ __('creatures.hints.is_dead') }}</span>
                 </span>
             @endif
             @if ($entity->isFamily() && $entity->child->isExtinct())
                 <span class="entity-name-icon entity-fam-extinct md:text-2xl" data-toggle="tooltip" data-title="{{ __('families.hints.is_extinct') }}">
-                    <x-icon class="fa-regular fa-skull entity-icons " />
+                    <x-icon class="fa-solid-skull entity-icons " />
                     <span class="sr-only">{{ __('families.hints.is_extinct') }}</span>
                 </span>
             @endif
             @can('admin', $campaign)
                 <span role="button" tabindex="0" class="entity-privacy-icon md:text-2xl hover:text-primary" data-toggle="dialog" data-url="{{ route('entities.quick-privacy', [$campaign, $entity]) }}" aria-haspopup="dialog">
-                        <i class="fa-regular fa-lock entity-icons" data-title="{{ __('entities/permissions.quick.title') }}" data-toggle="tooltip" aria-hidden="true"></i>
-                        <i class="fa-regular fa-lock-open entity-icons" data-title="{{ __('entities/permissions.quick.title') }}" data-toggle="tooltip" aria-hidden="true"></i>
+                        <i class="fa-solid fa-lock entity-icons" data-title="{{ __('entities/permissions.quick.title') }}" data-toggle="tooltip" aria-hidden="true"></i>
+                        <i class="fa-solid fa-lock-open entity-icons" data-title="{{ __('entities/permissions.quick.title') }}" data-toggle="tooltip" aria-hidden="true"></i>
                         <span class="sr-only">{{ __('entities/permissions.quick.screen-reader') }}</span>
                     </span>
             @endif
@@ -214,7 +214,7 @@ $breadcrumb = Breadcrumb::campaign($campaign)->entity($entity)->list();
         @endif
             @can('update', $entity)
                 <span role="button" tabindex="0" class="entity-tag-icon text-xl hover:text-primary" data-toggle="dialog" data-url="{{ $addTagsUrl }}" aria-haspopup="dialog">
-                    <x-icon class="fa-regular fa-tag" tooltip="1" :title="__('entities/tags.create.title')" />
+                    <x-icon class="fa-solid-tag" tooltip="1" :title="__('entities/tags.create.title')" />
                     <span class="sr-only">{{ __('entities/tags.create.title')  }}</span>
                 </span>
             @endcan

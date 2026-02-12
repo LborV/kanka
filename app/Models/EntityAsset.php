@@ -135,7 +135,7 @@ class EntityAsset extends Model
     public function icon(): string
     {
         if (empty($this->metadata['icon'])) {
-            return 'fa-regular fa-link';
+            return 'fa-solid fa-link';
         }
 
         return (string) $this->metadata['icon'];
@@ -144,16 +144,16 @@ class EntityAsset extends Model
     public function previewIcon(): string
     {
         if (! $this->image) {
-            return 'fa-regular fa-file';
+            return 'fa-solid-file';
         }
 
         return match ($this->image->ext) {
-            'pdf' => 'fa-regular fa-file-pdf',
-            'json' => 'fa-regular fa-brackets-curly',
-            'mp3', 'mp4', 'ogg' => 'fa-regular fa-file-music',
-            'xls', 'xlsx' => 'fa-regular fa-file-xls',
-            'csv' => 'fa-regular fa-file-csv',
-            default => 'fa-regular fa-file',
+            'pdf' => 'fa-solid-file-pdf',
+            'json' => 'fa-solid-brackets-curly',
+            'mp3', 'mp4', 'ogg' => 'fa-solid-file-music',
+            'xls', 'xlsx' => 'fa-solid-file-xls',
+            'csv' => 'fa-solid-file-csv',
+            default => 'fa-solid-file',
         };
     }
 

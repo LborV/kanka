@@ -16,22 +16,22 @@
             'visible' => $campaign->enabled('locations'),
         ],
         [
-            'label' => '<i class="fa-regular fa-skull-cow" title="' . __('creatures.fields.is_extinct') . '"></i>',
+            'label' => '<i class="fa-solid fa-skull-cow" title="' . __('creatures.fields.is_extinct') . '"></i>',
             'field' => 'is_extinct',
             'render' => function($model) {
                 if ($model->isExtinct()) {
-                    return '<i class="fa-regular fa-skull-cow" title="' . __('creatures.fields.is_extinct') . '"></i>';
+                    return '<i class="fa-solid-skull-cow" title="' . __('creatures.fields.is_extinct') . '"></i>';
                 }
                 return '';
             },
             'class' => 'icon'
         ],
         [
-            'label' => '<i class="fa-regular fa-skull" title="' . __('characters.fields.is_dead') . '"></i>',
+            'label' => '<i class="fa-solid-skull" title="' . __('characters.fields.is_dead') . '"></i>',
             'field' => 'is_dead',
             'render' => function($model) {
                 if ($model->isDead()) {
-                    return '<i class="fa-regular fa-skull" title="' . __('characters.fields.is_dead') . '"></i>';
+                    return '<i class="fa-solid-skull" title="' . __('characters.fields.is_dead') . '"></i>';
                 }
                 return '';
             },

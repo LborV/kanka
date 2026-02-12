@@ -215,7 +215,7 @@ onBeforeUnmount(() => {
             <div class="gallery-header flex items-center justify-between p-4">
                 <h2 class="">Gallery</h2>
                 <button @click.prevent="closeGallery" class="btn2 btn-ghost">
-                    <i class="fa-regular fa-times" aria-hidden="true"></i>
+                    <i class="fa-solid fa-times" aria-hidden="true"></i>
                 </button>
             </div>
 
@@ -236,11 +236,11 @@ onBeforeUnmount(() => {
                             @click.prevent="clearSearch"
                             class="absolute right-3 top-1/2 -translate-y-1/2 text-base-content/50 hover:text-base-content"
                         >
-                            <i class="fa-regular fa-times" aria-hidden="true"></i>
+                            <i class="fa-solid-times" aria-hidden="true"></i>
                         </button>
                     </div>
                     <button @click.prevent="search" class="btn2 btn-primary">
-                        <i class="fa-regular fa-search" aria-hidden="true"></i>
+                        <i class="fa-solid-search" aria-hidden="true"></i>
                         Search
                     </button>
                 </div>
@@ -248,7 +248,7 @@ onBeforeUnmount(() => {
                 <!-- Breadcrumb / Back navigation -->
                 <div v-if="folderStack.length > 0" class="flex items-center gap-2 text-sm">
                     <button @click.prevent="goToRoot" class="btn2 btn-ghost btn-xs">
-                        <i class="fa-regular fa-home" aria-hidden="true"></i>
+                        <i class="fa-solid-home" aria-hidden="true"></i>
                     </button>
                     <span class="text-base-content/50">/</span>
                     <template v-for="(folder, index) in folderStack" :key="index">
@@ -256,7 +256,7 @@ onBeforeUnmount(() => {
                         <span class="text-base-content/50">/</span>
                     </template>
                     <button @click.prevent="goBack" class="btn2 btn-ghost btn-xs">
-                        <i class="fa-regular fa-arrow-left" aria-hidden="true"></i>
+                        <i class="fa-solid-arrow-left" aria-hidden="true"></i>
                         Back
                     </button>
                 </div>
@@ -307,7 +307,7 @@ onBeforeUnmount(() => {
                     :disabled="!pagination.prev"
                     class="btn2 btn-ghost btn-xs"
                 >
-                    <i class="fa-regular fa-chevron-left" aria-hidden="true"></i>
+                    <i class="fa-solid-chevron-left" aria-hidden="true"></i>
                     Previous
                 </button>
                 <button
@@ -316,7 +316,7 @@ onBeforeUnmount(() => {
                     class="btn2 btn-ghost btn-xs"
                 >
                     Next
-                    <i class="fa-regular fa-chevron-right" aria-hidden="true"></i>
+                    <i class="fa-solid-chevron-right" aria-hidden="true"></i>
                 </button>
             </div>
         </div>

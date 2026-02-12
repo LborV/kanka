@@ -354,7 +354,7 @@
 
   bunker(function () {
     defineIcons('far', icons);
-    defineIcons('fa-regular', icons);
+    defineIcons('fa-solid', icons);
   });
 
 }());

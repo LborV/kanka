@@ -33,7 +33,7 @@ class SubmenuService
             'entity' => true,
             'button' => isset($this->user) && $this->user->can('update', $this->entity) ? [
                 'url' => route('entities.story.reorder', [$this->campaign, $this->entity]),
-                'icon' => 'fa-regular fa-arrow-up-arrow-down',
+                'icon' => 'fa-solid fa-arrow-up-arrow-down',
                 'tooltip' => __('entities/story.reorder.icon_tooltip'),
             ] : null,
         ];
@@ -45,7 +45,7 @@ class SubmenuService
             'route' => 'entities.relations.index',
             'count' => $this->entity->relationships()->has('target')->count(),
             'entity' => true,
-            'icon' => 'fa-regular fa-users',
+            'icon' => 'fa-solid-users',
         ];
         //        }
 
@@ -98,7 +98,7 @@ class SubmenuService
                 'route' => 'entities.entity_assets.index',
                 'count' => $this->entity->assets()->count(),
                 'entity' => true,
-                'icon' => 'fa-regular fa-file',
+                'icon' => 'fa-solid-file',
             ];
         }
 

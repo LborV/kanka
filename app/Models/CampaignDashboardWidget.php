@@ -442,26 +442,26 @@ class CampaignDashboardWidget extends Model
     public function widgetIcon(): string
     {
         if ($this->widget === Widget::Recent) {
-            return 'fa-regular fa-list';
+            return 'fa-solid fa-list';
         } elseif ($this->widget === Widget::Header) {
-            return 'fa-regular fa-heading';
+            return 'fa-solid-heading';
         } elseif ($this->widget === Widget::Preview) {
-            return 'fa-regular fa-align-justify';
+            return 'fa-solid-align-justify';
         } elseif ($this->widget === Widget::Calendar) {
-            return 'fa-regular fa-calendar';
+            return 'fa-solid-calendar';
         } elseif ($this->widget === Widget::Random) {
-            return 'fa-regular fa-dice-d20';
+            return 'fa-solid-dice-d20';
         } elseif ($this->widget === Widget::Campaign) {
-            return 'fa-regular fa-th-list';
+            return 'fa-solid-th-list';
         } elseif ($this->widget === Widget::Welcome) {
-            return 'fa-regular fa-party-horn';
+            return 'fa-solid-party-horn';
         } elseif ($this->widget === Widget::Onboarding) {
-            return 'fa-regular fa-calendar-check';
+            return 'fa-solid-calendar-check';
         } elseif ($this->widget === Widget::Schedule) {
-            return 'fa-regular fa-clock';
+            return 'fa-solid-clock';
         }
 
-        return 'fa-regular fa-question-circle';
+        return 'fa-solid-question-circle';
     }
 
     public function customClass(Campaign $campaign): string

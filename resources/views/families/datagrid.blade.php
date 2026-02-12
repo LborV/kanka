@@ -17,7 +17,7 @@
             'visible' => $campaign->enabled('locations'),
         ],
         [
-            'label' => '<i class="fa-regular fa-users" title="' . __('organisations.fields.members') . '"></i>',
+            'label' => '<i class="fa-solid fa-users" title="' . __('organisations.fields.members') . '"></i>',
             'visible' => $campaign->enabled('characters'),
             'render' => function($model) {
                 return number_format($model->members_count);
@@ -25,11 +25,11 @@
             'disableSort' => true,
         ],
         [
-            'label' => '<i class="fa-regular fa-skull" title="' . __('creatures.fields.is_extinct') . '"></i>',
+            'label' => '<i class="fa-solid-skull" title="' . __('creatures.fields.is_extinct') . '"></i>',
             'field' => 'is_extinct',
             'render' => function($model) {
                 if ($model->isExtinct()) {
-                    return '<i class="fa-regular fa-skull" title="' . __('creatures.fields.is_extinct') . '"></i>';
+                    return '<i class="fa-solid-skull" title="' . __('creatures.fields.is_extinct') . '"></i>';
                 }
                 return '';
             },

@@ -208,7 +208,7 @@ class DatagridRenderer
                 }
                 $html = $this->route(
                     'is_private',
-                    '<i class="fa-regular fa-lock" data-title="' . __('crud.fields.is_private') . '" aria-hidden="true" data-toggle="tooltip"></i> <span class="sr-only">' . __('crud.fields.is_private') . '</span>'
+                    '<i class="fa-solid fa-lock" data-title="' . __('crud.fields.is_private') . '" aria-hidden="true" data-toggle="tooltip"></i> <span class="sr-only">' . __('crud.fields.is_private') . '</span>'
                 );
                 $class = 'w-14 text-center';
             } elseif ($type == 'reminder') {
@@ -281,14 +281,14 @@ class DatagridRenderer
 
         // Order by
         $order = $this->filterService->order();
-        $orderImg = ' <i class="fa-regular fa-sort" aria-hidden="true"></i>';
+        $orderImg = ' <i class="fa-solid-sort" aria-hidden="true"></i>';
         if (! empty($order) && isset($order[$field])) {
             $direction = 'down';
             if ($order[$field] != 'DESC') {
                 $routeOptions['desc'] = true;
                 $direction = 'up';
             }
-            $orderImg = ' <i class="fa-regular fa-sort-' . $direction . '" aria-hidden="true"></i>';
+            $orderImg = ' <i class="fa-solid-sort-' . $direction . '" aria-hidden="true"></i>';
         }
 
         return "<a href='" .
@@ -410,7 +410,7 @@ class DatagridRenderer
             } else {
                 // Handle boolean values (has, is)
                 if ($this->isBoolean($column)) {
-                    $icon = $column == 'is_dead' ? 'fa-regular fa-skull' : 'fa-regular fa-check-circle';
+                    $icon = $column == 'is_dead' ? 'fa-solid-skull' : 'fafa-solidcheck-circle';
                     $content = $model->{$column} ? '<i class="' . $icon . '" aria-hidden="true"></i>' : '';
                 } else {
                     $content = ($model->{$column});
@@ -490,7 +490,7 @@ class DatagridRenderer
                     return null;
                 }
                 $content = $model->is_private ?
-                    '<i class="fa-regular fa-lock" data-title="' . __('crud.is_private') . '" aria-hidden="true" data-toggle="tooltip"></i> <span class="sr-only">' . __('crud.is_private') . '</span>' :
+                    '<i class="fa-solid-lock" data-title="' . __('crud.is_private') . '" aria-hidden="true" data-toggle="tooltip"></i> <span class="sr-only">' . __('crud.is_private') . '</span>' :
                     null;
                 $class = ' text-center';
             } elseif ($type == 'reminder') {
@@ -569,7 +569,7 @@ class DatagridRenderer
             $actions .= ' <a href="'
                 . route($this->getOption('baseRoute') . '.edit', [$this->campaign, $model])
                 . '" title="' . __('crud.edit') . '" class="text-link">
-                <i class="fa-regular fa-edit" aria-hidden="true"></i>
+                <i class="fa-solid-edit" aria-hidden="true"></i>
             </a>';
         }
 

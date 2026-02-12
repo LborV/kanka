@@ -20,23 +20,23 @@
                 <h1 class="grow text-2xl category-title truncate" v-html="props.module"></h1>
                 <div class="bg-base-200 flex items-stretch gap-1 rounded-xl" v-if="filters > 0">
                     <div class="flex items-center rounded-xl gap-2 hover:bg-base-300 px-2 py-2 cursor-pointer" v-bind:aria-label="i18n.filters" :title="i18n.filters" @click="openFilters">
-                        <i class="fa-regular fa-filter hover:bg-base-300" aria-label="Filter"></i>
+                        <i class="fa-solid fa-filter hover:bg-base-300" aria-label="Filter"></i>
                         <span class="rounded bg-primary text-primary-content px-2 text-sm">1</span>
                     </div>
 
                     <div class="flex items-center justify-center rounded-xl gap-2 hover:bg-base-300 px-3 py-2 cursor-pointer hover:text-primary" :title="i18n.bookmark" v-if="bookmarkable" @click="bookmark">
-                        <i class="fa-regular fa-bookmark" v-bind:aria-label="i18n.bookmark">
+                        <i class="fa-solid-bookmark" v-bind:aria-label="i18n.bookmark">
                         </i>
                     </div>
                     <div class="w-0 h-auto my-2 border-base-content border-l"></div>
 
                     <a class="flex items-center rounded-xl gap-2 hover:bg-base-300 px-2 py-2 text-base-content hover:text-primary" :href="filterUrls.clear">
-                        <i class="fa-regular fa-eraser" aria-label="Clear">
+                        <i class="fa-solid-eraser" aria-label="Clear">
                         </i>
                     </a>
                 </div>
                 <div v-else>
-                    <i class="fa-regular fa-filter text-lg rounded hover:text-primary-content cursor-pointer px-2 py-1 hover:bg-primary" v-bind:aria-label="i18n.filters" :title="i18n.filters" @click="openFilters">
+                    <i class="fa-solid-filter text-lg rounded hover:text-primary-content cursor-pointer px-2 py-1 hover:bg-primary" v-bind:aria-label="i18n.filters" :title="i18n.filters" @click="openFilters">
 
                     </i>
                 </div>
@@ -62,7 +62,7 @@
                 </button>
                 <div class="dropdown" v-else>
                     <button @click="orderDropdown = !orderDropdown" class="btn2" :title="i18n.order">
-                        <i class="fa-regular fa-arrow-down-a-z" aria-hidden="true"></i>
+                        <i class="fa-solid-arrow-down-a-z" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-menu absolute mt-2 flex flex-col gap-1 bg-base-200 shadow-sm p-2 rounded z-10" role="menu" id="templates-submenu" v-if="orderDropdown" v-click-outside="onClickOutside">
                         <button @click="orderBy('name')" :class="orderByClass('name')">
@@ -85,33 +85,33 @@
                         <i class="fa-solid fa-spinner fa-spin" aria-label="Loading"></i>
                     </button>
                     <button @click="switchMode()" class="btn2" v-if="nested && !nesting" :title="i18n.flatten">
-                        <i class="fa-regular fa-boxes-stacked" aria-hidden="true"></i>
+                        <i class="fa-solid-boxes-stacked" aria-hidden="true"></i>
                         <span class="sr-only" v-html="i18n.flatten"></span>
                     </button>
                     <button @click="switchMode()" class="btn2" v-else-if="!nesting" :title="i18n.nest">
-                        <i class="fa-regular fa-layer-group" aria-hidden="true"></i>
+                        <i class="fa-solid-layer-group" aria-hidden="true"></i>
                         <span class="sr-only" v-html="i18n.nest"></span>
                     </button>
                 </div>
                 <div v-if="entityType.has_table">
                     <button @click="switchLayout()" class="btn2" v-if="isGrid()" :title="i18n.layout_table">
-                        <i class="fa-regular fa-list-ul" aria-hidden="true"></i>
+                        <i class="fa-solid-list-ul" aria-hidden="true"></i>
                         <span class="sr-only" v-html="i18n.layout_table"></span>
                     </button>
                     <button @click="switchLayout()" class="btn2" v-else :title="i18n.layout_grid">
-                        <i class="fa-regular fa-grid-2 " aria-hidden="true"></i>
+                        <i class="fa-solid-grid-2 " aria-hidden="true"></i>
                         <span class="sr-only" v-html="i18n.layout_grid"></span>
                     </button>
                 </div>
                 <div class="join"  v-if="hasPermissions() && permissions.create">
                     <a :href="urls.create" class="btn2 btn-primary join-item btn-new-entity">
-                        <i class="fa-regular fa-plus" aria-hidden="true"></i>
+                        <i class="fa-solid-plus" aria-hidden="true"></i>
                         <span class="hidden md:inline" v-html="entityType.singular"></span>
                     </a>
 
                     <div class="dropdown relative" v-if="permissions.template">
                         <button type="button" class="btn2 btn-primary join-item"  aria-expanded="false" aria-label="Create from template" aria-haspopup="menu" aria-controls="templates-submenu" @click="templating = !templating">
-                            <i class="fa-regular fa-caret-down" aria-hidden="true"></i>
+                            <i class="fa-solid-caret-down" aria-hidden="true"></i>
                             <span class="sr-only" v-html="i18n.actions"></span>
                         </button>
                         <div class="dropdown-menu absolute mt-2 flex flex-col gap-1 right-0 bg-base-200 shadow-sm p-2 rounded z-10" role="menu" id="templates-submenu" v-if="templating" v-click-outside="onClickOutside">
@@ -121,7 +121,7 @@
                                 :key="template.id"
                                 class="new-entity-from-template text-base-content flex items-center gap-2 px-2 py-1"
                             >
-                                <i class="fa-regular fa-star" aria-hidden="true"></i>
+                                <i class="fa-solid-star" aria-hidden="true"></i>
                                 <span v-html="template.name"></span>
                             </a>
                             <hr class="m-0" />
@@ -129,7 +129,7 @@
                                 href="https://docs.kanka.io/en/latest/guides/templates.html"
                                 class="flex flex-no-wrap gap-2 px-2 py-1 items-center"
                             >
-                                <i class="fa-regular fa-external-link" aria-hidden="true"></i>
+                                <i class="fa-solid-external-link" aria-hidden="true"></i>
                                 <span class="text-nowrap" v-html="i18n.templates"></span>
                             </a>
                         </div>
@@ -140,18 +140,18 @@
             <div class="flex gap-2 items-center" v-else>
                 <div class="join">
                     <button class="btn2 btn-primary join-item btn-bulk-batch" @click="bulkDialog(urls.batch)" v-if="permissions.admin">
-                        <i class="fa-regular fa-pencil" aria-hidden="true"></i>
+                        <i class="fa-solid-pencil" aria-hidden="true"></i>
                         <span class="hidden md:inline" v-html="i18n.bulkEdit"></span>
                     </button>
                     <button v-else class="btn2 join-item btn-primary" @click="bulkPrint()">
-                        <i class="fa-regular fa-print" aria-hidden="true"></i>
+                        <i class="fa-solid-print" aria-hidden="true"></i>
                         <span class="hidden md:inline" v-html="i18n.bulkPrint"></span>
                     </button>
 
                     <!-- If permissions isn't empty but an actual object !-->
                     <div class="dropdown relative" v-if="hasPermissions()">
                         <button type="button" class="btn2 btn-primary join-item"  aria-expanded="false" aria-label="Create from template" aria-haspopup="menu" aria-controls="templates-submenu" @click="templating = !templating">
-                            <i class="fa-regular fa-caret-down" aria-hidden="true"></i>
+                            <i class="fa-solid-caret-down" aria-hidden="true"></i>
                             <span class="sr-only" v-html="i18n.actions"></span>
                         </button>
                         <div class="dropdown-menu absolute mt-2 flex flex-col gap-1 right-0 bg-base-200 shadow-sm p-2 rounded z-10" role="menu" id="templates-submenu" v-if="templating" v-click-outside="onClickOutside">
@@ -160,7 +160,7 @@
                                 @click="bulkDialog(urls.permissions)"
                                 class="flex items-center gap-2 px-2 py-1 cursor-pointer text-nowrap hover:text-primary"
                             >
-                                <i class="fa-regular fa-lock" aria-hidden="true"></i>
+                                <i class="fa-solid-lock" aria-hidden="true"></i>
                                 <span v-html="i18n.bulkPermissions"></span>
                             </button>
                             <button
@@ -168,14 +168,14 @@
                                 @click="bulkDialog(urls.transform)"
                                 class="flex items-center gap-2 px-2 py-1 cursor-pointer text-nowrap hover:text-primary"
                             >
-                                <i class="fa-regular fa-exchange-alt" aria-hidden="true"></i>
+                                <i class="fa-solid-exchange-alt" aria-hidden="true"></i>
                                 <span v-html="i18n.bulkTransform"></span>
                             </button>
                             <button
                                 @click="bulkDialog(urls.copy)"
                                 class="flex items-center gap-2 px-2 py-1 cursor-pointer text-nowrap hover:text-primary"
                             >
-                                <i class="fa-regular fa-clone" aria-hidden="true"></i>
+                                <i class="fa-solid-clone" aria-hidden="true"></i>
                                 <span v-html="i18n.bulkCopy"></span>
                             </button>
                             <button
@@ -183,7 +183,7 @@
                                 @click="bulkDialog(urls.template)"
                                 class="flex items-center gap-2 px-2 py-1 cursor-pointer text-nowrap hover:text-primary"
                             >
-                                <i class="fa-regular fa-table" aria-hidden="true"></i>
+                                <i class="fa-solid-table" aria-hidden="true"></i>
                                 <span v-html="i18n.bulkTemplate"></span>
                             </button>
                             <button
@@ -191,7 +191,7 @@
                                 @click="bulkPrint()"
                                 class="flex items-center gap-2 px-2 py-1 cursor-pointer text-nowrap hover:text-primary"
                             >
-                                <i class="fa-regular fa-print" aria-hidden="true"></i>
+                                <i class="fa-solid-print" aria-hidden="true"></i>
                                 <span v-html="i18n.bulkPrint"></span>
                             </button>
                             <button
@@ -199,7 +199,7 @@
                                 @click="bulkDelete()"
                                 class="flex items-center gap-2 px-2 py-1 cursor-pointer text-error hover:bg-error hover:text-error-content rounded"
                             >
-                                <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
+                                <i class="fa-solid-trash-can" aria-hidden="true"></i>
                                 <span v-html="i18n.bulkDelete"></span>
                             </button>
                         </div>
@@ -211,7 +211,7 @@
             <div :class="gridLayout()">
                 <a v-if="parent && isGrid()" :href="parent.urls.parent" class="entity w-[47%] xs:w-[25%] sm:w-48 overflow-hidden rounded flex flex-col shadow-xs hover:shadow-md sm text-link">
                     <div class="w-46 flex items-center justify-center grow  text-6xl">
-                        <i class="fa-regular fa-arrow-left" aria-hidden="true"></i>
+                        <i class="fa-solid-arrow-left" aria-hidden="true"></i>
                     </div>
                     <div class="block text-center p-4 h-12 bg-box">
                         <span v-html="parent.links.back"></span>
@@ -219,7 +219,7 @@
                 </a>
                 <a v-else-if="parent && !isGrid()" :href="parent.urls.parent" class="rounded-xl flex bg-base-100 shadow-xs items-center gap-4 py-2 px-4 overflow-hidden text-link">
                     <div class="">
-                        <i class="fa-regular fa-arrow-left" aria-hidden="true"></i>
+                        <i class="fa-solid-arrow-left" aria-hidden="true"></i>
                     </div>
                     <div class="">
                         <span v-html="parent.links.back"></span>
@@ -462,9 +462,9 @@ const orderByClass = (field: string) => {
 
 const orderByIcon = (field: string) => {
     if (isOrderingAscending(field)) {
-        return 'fa-regular fa-arrow-down-z-a';
+        return 'fa-solid-arrow-down-z-a';
     }
-    return 'fa-fa-regular fa-arrow-down-a-z';
+    return 'fa-fa-solid-arrow-down-a-z';
 }
 
 const isOrdering = (field: string) => {

@@ -23,11 +23,26 @@ class Element extends Component
      */
     public function render(): View|Closure|string
     {
+        $this->icon = $this->normalizeIcon($this->icon);
+
         $view = 'link';
         if (empty($this->url)) {
             $view = 'text';
         }
 
         return view('components.sidebar.element-' . $view);
+    }
+
+    protected function normalizeIcon(?string $icon): ?string
+    {
+        if (empty($icon)) {
+            return $icon;
+        }
+
+        if (str_contains($icon, 'fa-duotone')) {
+            return str_replace('fa-duotone', 'fa-solid', $icon);
+        }
+
+        return $icon;
     }
 }

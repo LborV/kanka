@@ -17,7 +17,7 @@
                     {!! $entity->name !!}
                 </a>
                 @if ($entity->isCharacter() && $entity->character->isDead())
-                    <x-icon class="fa-regular fa-skull" tooltip :title="__('characters.hints.is_dead')" />
+                    <x-icon class="fa-solid fa-skull" tooltip :title="__('characters.hints.is_dead')" />
                 @endif
             </div>
 

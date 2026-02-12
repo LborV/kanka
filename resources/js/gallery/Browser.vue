@@ -7,7 +7,7 @@
         <header class="flex gap-6 items-center p-4 md:p-6 justify-between">
             <h4 v-html="trans.browse.title" class="text-lg font-normal"></h4>
             <button type="button" class="text-base-content" @click="closeBrowser()" title="Close">
-                <i class="fa-regular fa-circle-xmark" aria-hidden="true"></i>
+                <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
                 <span class="sr-only">Close</span>
             </button>
         </header>
@@ -18,10 +18,10 @@
                     <input type="text" class="w-full" :placeholder="trans.browse.search.placeholder" @input="handleInput" />
                 </div>
                 <div class="flex-none cursor-pointer btn2 btn-ghost btn-sm" v-if="mode !== 'large'" @click="toggle('large')" :title="trans.browse.layouts.large">
-                    <i class="fa-regular fa-grid-2" aria-label="Large previews"></i>
+                    <i class="fa-solid-grid-2" aria-label="Large previews"></i>
                 </div>
                 <div class="flex-none cursor-pointer btn2 btn-ghost btn-sm" v-if="mode !== 'small'" @click="toggle('small')" :title="trans.browse.layouts.small">
-                    <i class="fa-regular fa-grid-4" aria-label="Small previews"></i>
+                    <i class="fa-solid-grid-4" aria-label="Small previews"></i>
                 </div>
             </div>
 

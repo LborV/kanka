@@ -27,7 +27,7 @@
             <div class="parent-delete-row">
                 <div class="flex items-center gap-2">
                     <div class="sortable-handler p-2 cursor-move">
-                        <x-icon class="fa-regular fa-grip-vertical" />
+                        <x-icon class="fa-solid fa-grip-vertical" />
                     </div>
                     <div class="grow field">
                         <label class="sr-only">{{ __('calendars.parameters.hours.name') }}</label>
@@ -49,7 +49,7 @@
         <div class="parent-delete-row">
             <div class="flex items-center gap-2">
                 <div class="sortable-handler p-2 cursor-move">
-                    <x-icon class="fa-regular fa-grip-vertical" />
+                    <x-icon class="fa-solid-grip-vertical" />
                 </div>
                 <div class="grow field">
                     <label class="sr-only">{{ __('calendars.parameters.hours.name') }}</label>

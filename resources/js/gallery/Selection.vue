@@ -44,7 +44,7 @@
         <header class="flex gap-6 items-center p-4 md:p-6 justify-between">
             <h4 v-html="trans.cta_title" class="text-lg font-normal"></h4>
             <button type="button" class="text-base-content" @click="closeDialog(cta)" title="Close">
-                <i class="fa-regular fa-circle-xmark" aria-hidden="true"></i>
+                <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
                 <span class="sr-only">Close</span>
             </button>
         </header>
@@ -57,7 +57,7 @@
         <footer class="p-4 md:px-6" v-if="!hasPremium">
             <menu class="">
                 <a v-bind:href="props.cta" class="btn2 btn-primary">
-                    <i class="fa-regular fa-gem" aria-hidden="true" />
+                    <i class="fa-solid-gem" aria-hidden="true" />
                     <span v-html="trans.cta_action"></span>
                 </a>
             </menu>

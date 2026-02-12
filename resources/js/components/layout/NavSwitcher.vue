@@ -111,21 +111,21 @@
                     <div class="grid grid-cols-3 gap-2">
                         <a v-bind:href="marketplace.themes.url" class="border py-2 items-center justify-center rounded-md hover:shadow-md flex flex-col gap-1 border-base-300 text-link">
                             <div class="icon bg-base-200 rounded-full w-14 h-14 text-3xl aspect-square flex justify-center items-center">
-                                <i class="fa-duotone fa-palette" aria-hidden="true"></i>
+                                <i class="fa-solid fa-palette" aria-hidden="true"></i>
                             </div>
                             <div>{{ marketplace.themes.title }}</div>
                             <div class="text-muted text-xs">{{ marketplace.themes.number }}</div>
                         </a>
                         <a v-bind:href="marketplace.sheets.url" class="border py-2 items-center justify-center rounded-md hover:shadow-md flex flex-col gap-1 border-base-300 text-link">
                             <div class="icon bg-base-200 rounded-full w-14 h-14 text-3xl aspect-square flex justify-center items-center">
-                            <i class="fa-duotone fa-table-cells" aria-hidden="true"></i>
+                            <i class="fa-solid fa-table-cells" aria-hidden="true"></i>
                             </div>
                             <div>{{ marketplace.sheets.title }}</div>
                             <div class="text-muted text-xs">{{ marketplace.sheets.number }}</div>
                         </a>
                         <a v-bind:href="marketplace.content.url" class="border py-2 items-center justify-center rounded-md hover:shadow-md flex flex-col gap-1 border-base-300 text-link">
                             <div class="icon bg-base-200 rounded-full w-14 h-14 text-3xl aspect-square flex justify-center items-center">
-                                <i class="fa-duotone fa-dice-d20" aria-hidden="true"></i>
+                                <i class="fa-solid fa-dice-d20" aria-hidden="true"></i>
                             </div>
                             <div>{{ marketplace.content.title }}</div>
                             <div class="text-muted text-xs">{{ marketplace.content.number }}</div>
@@ -150,8 +150,8 @@
                             <div class="more" v-else>
                                 {{ profile.subscription.call_to_action }}
                                 <div class="link flex gap-1 items-center">{{ profile.subscription.call_to_action_2 }}
-                                    <i class="fa-duotone fa-credit-card" aria-hidden="true" v-if="pro"></i>
-                                    <i class="fa-regular fa-credit-card" aria-hidden="true" v-else></i>
+                                    <i class="fa-solid fa-credit-card" aria-hidden="true" v-if="pro"></i>
+                                    <i class="fa-solid fa-credit-card" aria-hidden="true" v-else></i>
                                     <i class="fa-brands fa-paypal" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -162,25 +162,25 @@
                 <ul class="m-0 p-0 list-none flex flex-col gap-2" v-if="!profile.is_impersonating">
                     <li>
                         <a v-bind:href="profile.urls.settings.url" class="p-2 block text-link">
-                            <i class="fa-regular fa-cog mr-3" aria-hidden="true"></i>
+                            <i class="fa-solid-cog mr-3" aria-hidden="true"></i>
                             {{ profile.urls.settings.name }}
                         </a>
                     </li>
                     <li>
                         <a v-bind:href="profile.urls.profile.url" class="p-2 block text-link">
-                            <i class="fa-regular fa-user mr-3" aria-hidden="true"></i>
+                            <i class="fa-solid-user mr-3" aria-hidden="true"></i>
                             {{ profile.urls.profile.name }}
                         </a>
                     </li>
                     <li>
                         <a v-bind:href="profile.urls.help.url" class="p-2 block text-link" target="_blank">
-                            <i class="fa-regular fa-question-circle mr-3" aria-hidden="true"></i>
+                            <i class="fa-solid-question-circle mr-3" aria-hidden="true"></i>
                             {{ profile.urls.help.name }}
                         </a>
                     </li>
                     <li>
                         <a href="#" v-on:click="logout()" class="p-2 block text-link">
-                            <i class="fa-regular fa-sign-out mr-3" aria-hidden="true"></i>
+                            <i class="fa-solid-sign-out mr-3" aria-hidden="true"></i>
                             {{ profile.urls.logout.name }}
                         </a>
                     </li>
@@ -188,7 +188,7 @@
                 <ul class="m-0 p-0 list-none flex flex-col gap-2" v-else>
                     <li>
                         <a v-bind:href="profile.return.url" class="text-link">
-                            <i class="fa-regular fa-sign-out-alt mr-3" aria-hidden="true"></i>
+                            <i class="fa-solid-sign-out-alt mr-3" aria-hidden="true"></i>
                             {{ profile.return.name }}
                         </a>
                     </li>
@@ -215,7 +215,7 @@
 
                         <a v-bind:href="campaigns.urls.new" class="new-campaign flex items-center text-center border-dashed border rounded-lg h-24 p-2 overflow-hidden text-link">
                             <span class="text-xs text-break uppercase">
-                                <i class="fa-regular fa-plus" aria-hidden="true" style="display: none"></i>
+                                <i class="fa-solid-plus" aria-hidden="true" style="display: none"></i>
                                 {{ campaigns.texts.new }}
                             </span>
                         </a>

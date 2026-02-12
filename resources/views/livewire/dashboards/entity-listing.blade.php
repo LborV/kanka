@@ -19,7 +19,7 @@
 
                 @if ($widget->entityType?->id === config('entities.ids.quest'))
                     @if ($entity->quest->isCompleted())
-                        <x-icon class="fa-regular fa-check-circle" tooltip :title="__('quests.fields.is_completed')" />
+                        <x-icon class="fa-solid fa-check-circle" tooltip :title="__('quests.fields.is_completed')" />
                     @endif
                 @endif
                 @if ($entity->is_private)

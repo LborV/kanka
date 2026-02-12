@@ -29,7 +29,7 @@
                         </a>
                     @endif
                     <a href="{{ route('calendars.day', [$campaign, $calendar, 'date' => "{$year}-{$month}-{$day}"]) }}" class="btn2 btn-xs" title="{{ __('calendars/time-entries.day.breadcrumb') }}">
-                        <x-icon class="fa-regular fa-expand" />
+                        <x-icon class="fa-solid fa-expand" />
                     </a>
                 </div>
             </div>

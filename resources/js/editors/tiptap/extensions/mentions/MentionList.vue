@@ -37,10 +37,10 @@ watch(() => props.items, () => {
 })
 
 const sectionConfig: Record<SectionType, { label: string; icon: string }> = {
-    entities: { label: 'Entities', icon: 'fa-regular fa-bookmark' },
-    posts: { label: 'Posts', icon: 'fa-regular fa-newspaper' },
-    attributes: { label: 'Attributes', icon: 'fa-regular fa-heart' },
-    new: { label: 'Create New', icon: 'fa-regular fa-plus' },
+    entities: { label: 'Entities', icon: 'fa-solid fa-bookmark' },
+    posts: { label: 'Posts', icon: 'fa-solid-newspaper' },
+    attributes: { label: 'Attributes', icon: 'fa-solid-heart' },
+    new: { label: 'Create New', icon: 'fa-solid-plus' },
 }
 
 const sections = computed<Section[]>(() => {
@@ -144,7 +144,7 @@ defineExpose({
                 >
                     <div class="flex gap-2 items-center">
                         <template v-if="section.key === 'new'">
-                            <i class="fa-regular fa-plus text-success" aria-hidden="true"></i>
+                            <i class="fa-solid-plus text-success" aria-hidden="true"></i>
                         </template>
                         <img
                             v-else-if="item.image"

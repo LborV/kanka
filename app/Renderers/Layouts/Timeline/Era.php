@@ -43,7 +43,7 @@ class Era extends Layout
                 'label' => 'timelines/eras.fields.is_collapsed',
                 'render' => function (TimelineEra $model) {
                     if ($model->is_collapsed) {
-                        return '<i class="fa-regular fa-check-circle" aria-hidden="true"></i>';
+                        return '<i class="fa-solid fa-check-circle" aria-hidden="true"></i>';
                     }
 
                     return '';

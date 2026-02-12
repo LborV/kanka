@@ -22,17 +22,17 @@ $data = false;
 <div class="dropdown entity-actions-dropdown flex items-center">
     <div role="button" tabindex="0" data-dropdown aria-expanded="false" aria-haspopup="menu" aria-controls="entity-submenu" class="btn2 btn-sm entity-actions-button">
         <span class="sr-only">{{ __('Open action menu') }}</span>
-        <x-icon class="fa-regular fa-ellipsis-h" />
+        <x-icon class="fa-solid fa-ellipsis-h" />
     </div>
     <div class="dropdown-menu hidden" role="menu" id="entity-submenu">
         <!-- Create & Link section -->
         @can('create', [$entity->entityType, $campaign])
             @php $create = true; @endphp
-            <x-dropdowns.item :link="$entity->entityType->createRoute($campaign)" icon="fa-regular fa-plus">
+            <x-dropdowns.item :link="$entity->entityType->createRoute($campaign)" icon="fa-solid-plus">
                 {{ __('crud.actions.new') }}
             </x-dropdowns.item>
             @if ($entity->entityType->isCustom() || ($entity->entityType->isStandard() && method_exists($entity->child, 'getParentKeyName')))
-                <x-dropdowns.item :link="$entity->entityType->createRoute($campaign, ['parent_id' => $entity->entityType->isCustom() ? $entity->id : $entity->child->id])" icon="fa-regular fa-plus">
+                <x-dropdowns.item :link="$entity->entityType->createRoute($campaign, ['parent_id' => $entity->entityType->isCustom() ? $entity->id : $entity->child->id])" icon="fa-solid-plus">
                     {{ __('crud.actions.new_child') }}
                 </x-dropdowns.item>
             @endif
@@ -40,14 +40,14 @@ $data = false;
         @if ($entity && auth()->check())
             @can('post', [$entity])
                 @php $create = true; @endphp
-                <x-dropdowns.item :link="route('entities.posts.create', [$campaign, $entity])" icon="fa-regular fa-pen-to-square">
+                <x-dropdowns.item :link="route('entities.posts.create', [$campaign, $entity])" icon="fa-solid-pen-to-square">
                     {{ __('crud.actions.new_post') }}
                 </x-dropdowns.item>
             @endcan
 
             @can('update', $entity)
                 @php $create = true; @endphp
-                <x-dropdowns.item link="{{ route('entities.relations.create', [$campaign, 'entity' => $entity, 'mode' => 'table']) }}" :dialog="route('entities.relations.create', [$campaign, 'entity' => $entity, 'mode' => 'table'])" icon="fa-regular fa-people-arrows">
+                <x-dropdowns.item link="{{ route('entities.relations.create', [$campaign, 'entity' => $entity, 'mode' => 'table']) }}" :dialog="route('entities.relations.create', [$campaign, 'entity' => $entity, 'mode' => 'table'])" icon="fa-solid-people-arrows">
                     {{ __('entities/relations.create.new_title') }}
                 </x-dropdowns.item>
             @endcan
@@ -58,17 +58,17 @@ $data = false;
         <!-- Manage section -->
         @can('create', [$entity->entityType, $campaign])
             @php $manage = true; @endphp
-            <x-dropdowns.item link="{{ $entity->entityType->createRoute($campaign, ['copy' => $entity->id]) }}" icon="fa-regular fa-copy">
+            <x-dropdowns.item link="{{ $entity->entityType->createRoute($campaign, ['copy' => $entity->id]) }}" icon="fa-solid-copy">
                 {{ __('crud.actions.copy') }}
             </x-dropdowns.item>
         @endcan
         @auth
             @php $manage = true; @endphp
-            <x-dropdowns.item link="#" :data="['title' => $entity->entityType->code . ':' . $entity->id, 'toggle' => 'tooltip', 'clipboard' => '[' . $entity->entityType->code . ':' . $entity->id .']', 'toast' => __('crud.alerts.copy_mention')]" icon="fa-regular fa-at">
+            <x-dropdowns.item link="#" :data="['title' => $entity->entityType->code . ':' . $entity->id, 'toggle' => 'tooltip', 'clipboard' => '[' . $entity->entityType->code . ':' . $entity->id .']', 'toast' => __('crud.alerts.copy_mention')]" icon="fa-solid-at">
                 {{ __('crud.actions.copy_mention') }}
             </x-dropdowns.item>
             @can('setTemplates', $campaign)
-                <x-dropdowns.item :link="route('entities.template', [$campaign, $entity])" :icon="$entity->isTemplate() ? 'fa-regular fa-star' : 'fa-solid fa-star'">
+                <x-dropdowns.item :link="route('entities.template', [$campaign, $entity])" :icon="$entity->isTemplate() ? 'fa-solid-star' : 'fa-solid fa-star'">
                     @if($entity->isTemplate())
                         {{ __('entities/actions.templates.unset') }}
                     @else
@@ -79,14 +79,14 @@ $data = false;
 
 
             @can('update', $entity)
-                <x-dropdowns.item :link="route('entities.story.reorder', [$campaign, $entity])" icon="fa-regular fa-list-ol">
+                <x-dropdowns.item :link="route('entities.story.reorder', [$campaign, $entity])" icon="fa-solid-list-ol">
                     {{ __('entities/story.reorder.icon_tooltip') }}
                 </x-dropdowns.item>
             @endcan
 
             @can('update', $entity)
                 @if ($entity->isTimeline())
-                    <x-dropdowns.item :link="route('timelines.reorder', [$campaign, $entity->child])" icon="fa-regular fa-list-ol">
+                    <x-dropdowns.item :link="route('timelines.reorder', [$campaign, $entity->child])" icon="fa-solid-list-ol">
                         {{ __('timelines.show.tabs.reorder-elements') }}
                     </x-dropdowns.item>
                 @endif
@@ -102,7 +102,7 @@ $data = false;
                 @php /** todo: the option should be visible even if a user has no other campaigns to show that its possible, and the page should then warn the user about them not having another campaign */ @endphp
                 @php $system = true; @endphp
                 @can('update', $entity)
-                    <x-dropdowns.item link="{{ route('entities.move', [$campaign, $entity]) }}" icon="fa-regular fa-share-from-square">
+                    <x-dropdowns.item link="{{ route('entities.move', [$campaign, $entity]) }}" icon="fa-solid-share-from-square">
                         {{ __('entities/actions.transfer') }}
                     </x-dropdowns.item>
                 @else
@@ -114,14 +114,14 @@ $data = false;
 
             @if ((empty($disableMove) || !$disableMove) && auth()->user()->can('move', $entity))
                 @php $system = true; @endphp
-                <x-dropdowns.item link="{{ route('entities.transform', [$campaign, $entity]) }}" icon="fa-regular fa-arrows-rotate">
+                <x-dropdowns.item link="{{ route('entities.transform', [$campaign, $entity]) }}" icon="fa-solid-arrows-rotate">
                     {{ __('entities/actions.convert') }}
                 </x-dropdowns.item>
             @endif
 
             @can('update', $entity)
                 @php $system = true; @endphp
-                <x-dropdowns.item :link="route('entities.archive', [$campaign, $entity])" icon="fa-regular fa-archive">
+                <x-dropdowns.item :link="route('entities.archive', [$campaign, $entity])" icon="fa-solid-archive">
                     @if ($entity->archived_at)
                         {{ __('entities/actions.unarchive.title') }}
                     @else
@@ -135,11 +135,11 @@ $data = false;
 
 
         <!-- Data/Export section -->
-        <x-dropdowns.item link="{{ route('entities.html-export', [$campaign, $entity]) }}" icon="fa-regular fa-print">
+        <x-dropdowns.item link="{{ route('entities.html-export', [$campaign, $entity]) }}" icon="fa-solid-print">
             {{ __('crud.actions.print') }}
         </x-dropdowns.item>
         @auth
-            <x-dropdowns.item link="{{ route('entities.json.export', [$campaign, $entity]) }}" icon="fa-regular fa-download">
+            <x-dropdowns.item link="{{ route('entities.json.export', [$campaign, $entity]) }}" icon="fa-solid-download">
                 {{ __('entities/actions.json-export') }}
             </x-dropdowns.item>
             <x-dropdowns.item link="{{ route('entities.markdown.export', [$campaign, $entity]) }}" icon="fa-brands fa-markdown">

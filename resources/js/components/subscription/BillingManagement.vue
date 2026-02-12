@@ -30,7 +30,7 @@
                 {{ translate('add_one') }}
             </p>
             <a href="#" v-on:click.close="toggleShowNewPaymentMethod" class="btn2 btn-outline">
-                <i class="fa-regular fa-credit-card" aria-hidden="true"></i> {{ translate('actions.add_new') }}
+                <i class="fa-solid fa-credit-card" aria-hidden="true"></i> {{ translate('actions.add_new') }}
             </a>
         </div>
         <dialog class="dialog rounded-2xl text-center" id="modal-card" ref="cardModal" aria-modal="true" aria-labelledby="modal-card-label">

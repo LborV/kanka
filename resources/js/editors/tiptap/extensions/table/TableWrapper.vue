@@ -74,7 +74,7 @@ const addRowAfter = () => {
 <!--            title="Add column"-->
 <!--            contenteditable="false"-->
 <!--        >-->
-<!--            <i class="fa-regular fa-plus" aria-hidden="true"></i>-->
+<!--            <i class="fa-solid fa-plus" aria-hidden="true"></i>-->
 <!--        </button>-->
 
 <!--        &lt;!&ndash; Add row button (bottom) &ndash;&gt;-->
@@ -85,7 +85,7 @@ const addRowAfter = () => {
 <!--            title="Add row"-->
 <!--            contenteditable="false"-->
 <!--        >-->
-<!--            <i class="fa-regular fa-plus" aria-hidden="true"></i>-->
+<!--            <i class="fa-solid-plus" aria-hidden="true"></i>-->
 <!--        </button>-->
     </NodeViewWrapper>
 </template>

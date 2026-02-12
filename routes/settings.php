@@ -46,14 +46,17 @@ Route::patch('/account/billing/info', [InformationController::class, 'save'])->n
 Route::get('/boosters/boost/{campaign}', [BoostController::class, 'boost'])->name('settings.campaign-boost');
 Route::get('/boosters/unboost/{campaign}', [BoostController::class, 'unboost'])->name('settings.campaign-unboost');*/
 
-// Disabled for self-hosted: Premium routes
-/*Route::post('/switch-to-premium', [PremiumController::class, 'migrate'])
+// Disabled for self-hosted: Premium routes (stubbed to keep named routes available)
+Route::post('/switch-to-premium', fn () => abort(404))
     ->name('settings.switch-to-premium');
-Route::get('/switch-back', [PremiumController::class, 'back'])
+Route::get('/switch-back', fn () => abort(404))
     ->name('settings.switch-back');
-Route::get('/premium', [PremiumController::class, 'index'])->name('settings.premium');
-Route::get('/boosters/premium/{campaign}', [PremiumController::class, 'premium'])->name('settings.campaign-premium');
-Route::get('/boosters/unpremium/{campaign}', [PremiumController::class, 'unpremium'])->name('settings.campaign-unpremium');*/
+Route::get('/premium', fn () => abort(404))
+    ->name('settings.premium');
+Route::get('/boosters/premium/{campaign}', fn () => abort(404))
+    ->name('settings.campaign-premium');
+Route::get('/boosters/unpremium/{campaign}', fn () => abort(404))
+    ->name('settings.campaign-unpremium');
 
 Route::post('/release/{app_release}', [ReleaseController::class, 'read'])->name('settings.release');
 
@@ -88,25 +91,25 @@ Route::patch('/appearance', [AppearanceController::class, 'update'])->name('sett
 Route::get('/newsletter', [NewsletterController::class, 'index'])->name('settings.newsletter');
 Route::patch('/newsletter', [NewsletterController::class, 'update'])->name('settings.newsletter.save');
 
-// Disabled for self-hosted: Subscription management routes
-/*Route::get('/subscription', [SubscriptionController::class, 'index'])->name('settings.subscription');
-Route::get('/subscription/change/{tier}', [SubscriptionController::class, 'change'])->name('settings.subscription.change');
-Route::post('/subscription/renew', [SubscriptionController::class, 'renew'])->name('settings.subscription.renew');
-Route::get('/subscription/finish', [FinishController::class, 'index'])->name('settings.subscription.finish');
-Route::get('/subscription/callback', [SubscriptionController::class, 'callback'])->name('settings.subscription.callback');
-Route::post('/subscription/change/{tier}', [SubscriptionController::class, 'subscribe'])->name('settings.subscription.subscribe');
-Route::get('/subscription/unsubscribe', [CancellationController::class, 'index'])->name('settings.subscription.unsubscribe');
-Route::post('/subscription/cancel', [CancellationController::class, 'save'])->name('settings.subscription.cancel');
-Route::get('/subscription/cancelled', [CancelledController::class, 'index'])->name('settings.subscription.cancelled');
-Route::get('/billing/payment-method', [PaymentMethodController::class, 'index'])->name('billing.payment-method');
-Route::patch('/billing/payment-method', [PaymentMethodController::class, 'save'])->name('billing.payment-method.save');
-Route::get('/billing/currency', [PaymentMethodController::class, 'currency'])->name('billing.currency');
+// Disabled for self-hosted: Subscription management routes (stubbed to keep named routes available)
+Route::get('/subscription', fn () => abort(404))->name('settings.subscription');
+Route::get('/subscription/change/{tier}', fn () => abort(404))->name('settings.subscription.change');
+Route::post('/subscription/renew', fn () => abort(404))->name('settings.subscription.renew');
+Route::get('/subscription/finish', fn () => abort(404))->name('settings.subscription.finish');
+Route::get('/subscription/callback', fn () => abort(404))->name('settings.subscription.callback');
+Route::post('/subscription/change/{tier}', fn () => abort(404))->name('settings.subscription.subscribe');
+Route::get('/subscription/unsubscribe', fn () => abort(404))->name('settings.subscription.unsubscribe');
+Route::post('/subscription/cancel', fn () => abort(404))->name('settings.subscription.cancel');
+Route::get('/subscription/cancelled', fn () => abort(404))->name('settings.subscription.cancelled');
+Route::get('/billing/payment-method', fn () => abort(404))->name('billing.payment-method');
+Route::patch('/billing/payment-method', fn () => abort(404))->name('billing.payment-method.save');
+Route::get('/billing/currency', fn () => abort(404))->name('billing.currency');
 
-Route::get('/subscription/free-trial', [FreeTrialController::class, 'index'])->name('settings.free-trial');
-Route::post('/subscription/free-trial/accept', [FreeTrialController::class, 'accept'])->name('settings.free-trial.accept');
+Route::get('/subscription/free-trial', fn () => abort(404))->name('settings.free-trial');
+Route::post('/subscription/free-trial/accept', fn () => abort(404))->name('settings.free-trial.accept');
 
-Route::get('/billing/history', [HistoryController::class, 'index'])->name('billing.history');
-Route::get('/billing/history/download/{invoice}', [HistoryController::class, 'download'])->name('billing.history.download');*/
+Route::get('/billing/history', fn () => abort(404))->name('billing.history');
+Route::get('/billing/history/download/{invoice}', fn () => abort(404))->name('billing.history.download');
 
 Route::get('/bragi', 'Settings\BragiController@index')
     ->name('settings.bragi');
@@ -177,8 +180,7 @@ Route::post('/security/verify2fa', function () {
 Route::get('paypal/success-transaction', [PayPalController::class, 'successTransaction'])
     ->name('paypal.transaction-success');
 Route::get('paypal/cancel-transaction', [PayPalController::class, 'cancelTransaction'])
-    ->name('paypal.cancel-transaction');*/[PayPalController::class, 'cancelTransaction'])
-    ->name('paypal.cancel-transaction');
+    ->name('paypal.cancel-transaction');*/
 
 /*
 --------------------------------------------------------------------------

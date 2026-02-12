@@ -67,7 +67,7 @@
         @endif
 
         <span role="button" class="qq-action-more text-uppercase cursor-pointer text-sm border-dotted border-base-300 border-b {{ !isset($entityType) ? 'hidden' : null }}">
-            <x-icon class="fa-regular fa-caret-down" />
+            <x-icon class="fa-solid fa-caret-down" />
             {{ __('entities.creator.actions.more') }}
         </span>
         <div class="qq-more-fields flex flex-col gap-5 {{ isset($entityType) ? 'hidden' : null }}">
@@ -104,7 +104,7 @@
                 </button>
                 <button type="submit" class="join-item btn2 btn-primary btn-sm quick-creator-submit" name="next" data-entity-type="{{ $entityType->code ?? 'post' }}" value="more" title="{{ __('entities.creator.tooltips.create_more') }}">
                     <span>
-                        <x-icon class="fa-regular fa-plus-square" />
+                        <x-icon class="fa-solid-plus-square" />
                     </span>
                 </button>
             </div>
